@@ -36,9 +36,21 @@ One A100/H100-class 80 GB GPU, bf16, `attn_implementation="sdpa"`, 200 generated
   per GPU** before memory pressure. (Beyond ~B=48 the per-step cost starts rising, so the curve
   bends; measure on your hardware.)
 
-- **flash-attention.** Installing `flash_attn` and setting
-  `attn_implementation="flash_attention_2"` gives a further boost over `sdpa`, especially at large
-  B and long sequences. The provided scripts auto-detect it.
+- **flash-attention gives essentially NO speedup here — measured.** We benchmarked
+  `attn_implementation="flash_attention_2"` (flash-attn 2.7.4) against `sdpa` on the same GPU:
+
+  | batch | sdpa clips/s | flash-attn clips/s | speedup | peak VRAM |
+  |------:|-------------:|-------------------:|--------:|----------:|
+  |     1 |        0.146 |              0.142 |   0.97× | 24.3 GB (identical) |
+  |     8 |        1.105 |              1.103 |   1.00× | 25.0 GB |
+  |    32 |        4.096 |              3.753 |   0.92× | 27.5 GB |
+  |    64 |        5.202 |              5.237 |   1.01× | 30.7 GB |
+
+  Flash-attention only helps when attention (O(seq²)) dominates — i.e. long contexts. MOSS generation
+  is short-sequence autoregressive decoding (prompt + ~200 frames), so attention is a tiny slice of
+  the per-step cost; the bottleneck is the 8B transformer forward + KV-cache access. Result: **no
+  throughput gain and no memory saving.** `sdpa` (the default) is all you need — **batching is the
+  only real lever.** The scripts still auto-detect flash-attn but it is not required.
 
 - **Multi-GPU ≈ linear.** Generation is embarrassingly parallel across data — shard prompts over
   GPUs (one model replica each). ~6 GPUs ≈ **50–60 clips/s** aggregate.
@@ -54,7 +66,9 @@ One A100/H100-class 80 GB GPU, bf16, `attn_implementation="sdpa"`, 200 generated
 - **Batch 48–64 per GPU** for bulk generation — near-peak throughput at modest VRAM.
 - Use best-of-N by replicating one prompt to fill the batch (`batched.py`), then keep the
   top-scoring take with your quality/genuineness scorer.
-- Add `flash_attn` if you can; shard across GPUs for linear scale-out.
+- Don't bother with `flash_attn` — it gives no measurable speedup for this short-sequence decode
+  workload (see table above). `sdpa` is the default and is all you need. Shard across GPUs for
+  linear scale-out.
 - Keep `audio_top_p=0.95`, `audio_top_k=25`, `audio_repetition_penalty=1.1`; set
   `audio_temperature` to 1.0 with a reference clip or 0.8 without (see the root README grid-search
   settings).
