@@ -52,7 +52,7 @@ blend-quality head, and genuineness). Keep `audio_top_p=0.95`, `audio_top_k=25`.
 
 Rule of thumb: higher temperature → more expressive/genuine; lower → more intelligible. Raise the
 repetition penalty only if you hear buzzing/stuttering. See the
-[grid-search grid](https://laion-ai.github.io/moss-8b-voice-acting/gridsearch.html).
+[grid-search grid](https://projects.laion.ai/moss-8b-voice-acting/gridsearch.html).
 
 ## Fast inference
 
@@ -80,15 +80,15 @@ launchers, and loss construction — is in [`training/`](training/README.md). Br
 
 Hosted on GitHub Pages (play the audio in-browser):
 
-- **Samples:** [Voice-cloning + paraphrase](https://laion-ai.github.io/moss-8b-voice-acting/paraphrase_clones.html)
-- **Rankings:** [Genuineness (best-of-10)](https://laion-ai.github.io/moss-8b-voice-acting/genuineness_ranking.html) ·
-  [Combined reward](https://laion-ai.github.io/moss-8b-voice-acting/reward_ranking.html)
-- **Benchmarks:** [Generation-settings grid](https://laion-ai.github.io/moss-8b-voice-acting/gridsearch.html) ·
-  [Best-of-10 uplift](https://laion-ai.github.io/moss-8b-voice-acting/eval_bestof10.html) ·
-  [Best-of-32 uplift](https://laion-ai.github.io/moss-8b-voice-acting/eval_bestof32.html)
-- **Checkpoint eval:** [Held-out emotional prompts](https://laion-ai.github.io/moss-8b-voice-acting/checkpoint_eval.html)
+- **Samples:** [Voice-cloning + paraphrase](https://projects.laion.ai/moss-8b-voice-acting/paraphrase_clones.html)
+- **Rankings:** [Genuineness (best-of-10)](https://projects.laion.ai/moss-8b-voice-acting/genuineness_ranking.html) ·
+  [Combined reward](https://projects.laion.ai/moss-8b-voice-acting/reward_ranking.html)
+- **Benchmarks:** [Generation-settings grid](https://projects.laion.ai/moss-8b-voice-acting/gridsearch.html) ·
+  [Best-of-10 uplift](https://projects.laion.ai/moss-8b-voice-acting/eval_bestof10.html) ·
+  [Best-of-32 uplift](https://projects.laion.ai/moss-8b-voice-acting/eval_bestof32.html)
+- **Checkpoint eval:** [Held-out emotional prompts](https://projects.laion.ai/moss-8b-voice-acting/checkpoint_eval.html)
 
-Landing page: <https://laion-ai.github.io/moss-8b-voice-acting/>
+Landing page: <https://projects.laion.ai/moss-8b-voice-acting/>
 
 ## Checkpoint download
 
