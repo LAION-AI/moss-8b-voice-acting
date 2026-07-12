@@ -1,0 +1,41 @@
+<html><head><meta charset=utf-8><title>Best-of-100 voice-acting study</title><style>
+body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:1180px;margin:0 auto;padding:18px;color:#1a1a2e;background:#fafafe}
+h1{font-size:24px;margin:.2em 0}h2{font-size:19px;border-bottom:2px solid #4a4ae0;padding-bottom:4px;margin-top:1.4em}h3{font-size:16px;margin:.8em 0 .3em}
+.hdr{background:#eef0ff;border:1px solid #ccd;border-radius:8px;padding:10px 14px;font-size:12.5px;color:#333;line-height:1.5}
+.concl{background:#fff8e6;border:1px solid #e6d28a;border-radius:8px;padding:12px 16px;margin:14px 0}
+.concl li{margin:5px 0}
+table{border-collapse:collapse;width:100%;font-size:12.5px;margin:10px 0}
+th,td{border:1px solid #d0d0e0;padding:5px 8px;text-align:right}th{background:#4a4ae0;color:#fff}td:first-child,th:first-child{text-align:left}
+tr:nth-child(even){background:#f2f2fb}
+.pos{color:#0a7d28;font-weight:600}.neg{color:#c0281a;font-weight:600}
+.cell{border:1px solid #dde;border-radius:8px;padding:10px;margin:10px 0;background:#fff}
+.clip{display:flex;align-items:center;gap:10px;padding:4px 0;border-bottom:1px solid #eee;font-size:12px}
+.clip audio{height:30px}.rk{font-weight:700;color:#4a4ae0;width:52px}
+.mtr{font-family:monospace;font-size:11.5px;color:#444}
+.ref{background:#eafaf0;border:1px solid #b8e6c8}
+a{color:#4a4ae0}.nav td:first-child{text-align:left}
+.bot{color:#a33}
+</style></head><body>
+<h1>Best-of-100 voice-acting selection across speaker identities</h1>
+<div class="hdr"><b>Study:</b> best-of-100 voice-acting selection across speaker identities.
+<b>Model:</b> an 8B autoregressive expressive TTS model, generated WITH reference-voice conditioning
+(audio temperature 1.0, repetition penalty 1.1, text temperature 0.7, top-p 0.95, top-k 25, bf16).
+<b>Reference source:</b> a large open crowd-sourced corpus of expressive human speech (one distinct
+speaker clip per group, diverse emotions). <b>Reward:</b> combined = invWER x (norm_genu + norm_blend),
+where genu is a commercial-voice genuineness score (0-6) and blend an expressive-quality score (0-10),
+each min-max normalized across all generated clips; invWER = max(0, 1-WER) from multilingual ASR.
+<b>Achieved throughput:</b> 2.87 clips/s on a single GPU. </div>
+<h2>What this tests</h2><p>For 50 distinct reference voices (diverse emotions), we author one
+    3-sentence English voice-acting script + an emotion-matched delivery instruction, and a natural German
+    translation of the script. Each script is generated <b>100 times</b> under three reference conditions:
+    the <b>original</b> reference voice; the same content <b>voice-converted to a random speaker A</b>; and
+    <b>voice-converted to a random speaker B</b>. Before conversion the source is randomly sped up by
+    +0-50%. We ask: does the best-of-100 uplift over the reference hold across different speaker identities,
+    across English vs the German translation, and how does the random speed-up affect things?</p>
+<div class='concl'><h2 style='border:none;margin-top:0'>Conclusions</h2><ul><li><b>Best-of-100 lifts quality well above the reference in every condition.</b> Mean genuineness ceiling uplift = <b>+1.46</b> (0-6 scale), blend ceiling uplift = <b>+3.33</b> (0-10 scale) across all conditions.</li><li><b>The best take beats the reference</b> in genuineness for 100% of group-cells and in blend for 100% on average.</li><li><b>Speaker identity:</b> original voice genu uplift +1.36 vs converted-A +1.99 vs converted-B +1.02; blend uplift +3.93 / +3.38 / +2.70. The uplift holds across all three identities.</li><li><b>Language (EN vs DE-translation):</b> genu uplift EN +1.08 vs DE +1.83; blend uplift EN +1.54 vs DE +5.13.</li><li><b>Diminishing returns with N:</b> mean genu uplift grows from -0.05 (N=1) to +0.97 (N=10), +1.20 (N=32), +1.40 (N=100) &mdash; the N=100 ceiling sits above the earlier N=10/N=32 ceilings but gains taper.</li><li><b>Source speed-up (+0-50%) before conversion:</b> correlation with genu uplift r=-0.44, with picked-clip invWER r=-0.16 &mdash; a notable effect.</li></ul></div>
+<h2>Uplift by condition x language (means over groups)</h2><table><tr><th>Condition x Language</th><th>ref genu</th><th>best genu</th><th>genu ceiling uplift</th><th>ref blend</th><th>best blend</th><th>blend ceiling uplift</th><th>% beat ref (genu)</th><th>% beat ref (blend)</th></tr><tr><td>Original reference voice / English</td><td>0.53</td><td>1.60</td><td class='pos'>+1.07</td><td>0.44</td><td>2.52</td><td class='pos'>+2.08</td><td>100%</td><td>100%</td></tr><tr><td>Original reference voice / German</td><td>0.53</td><td>2.19</td><td class='pos'>+1.66</td><td>0.44</td><td>6.21</td><td class='pos'>+5.78</td><td>100%</td><td>100%</td></tr><tr><td>Voice-converted to a random speaker A / English</td><td>1.37</td><td>2.46</td><td class='pos'>+1.09</td><td>1.18</td><td>1.90</td><td class='pos'>+0.72</td><td>100%</td><td>100%</td></tr><tr><td>Voice-converted to a random speaker A / German</td><td>1.37</td><td>4.25</td><td class='pos'>+2.88</td><td>1.18</td><td>7.20</td><td class='pos'>+6.03</td><td>100%</td><td>100%</td></tr><tr><td>Voice-converted to a random speaker B / English</td><td>1.35</td><td>2.45</td><td class='pos'>+1.09</td><td>1.13</td><td>2.94</td><td class='pos'>+1.81</td><td>100%</td><td>100%</td></tr><tr><td>Voice-converted to a random speaker B / German</td><td>1.59</td><td>2.54</td><td class='pos'>+0.95</td><td>0.00</td><td>3.58</td><td class='pos'>+3.58</td><td>100%</td><td>100%</td></tr></table>
+<h2>Best-of-N ceiling curve (N=1/10/32/100, from the same 100 samples)</h2><table><tr><th>best-of-N</th><th>mean genu</th><th>genu uplift vs ref</th><th>mean blend</th><th>blend uplift vs ref</th></tr><tr><td>N=1</td><td>1.10</td><td class='neg'>-0.05</td><td>0.22</td><td class='neg'>-0.56</td></tr><tr><td>N=10</td><td>2.13</td><td class='pos'>+0.97</td><td>1.79</td><td class='pos'>+1.01</td></tr><tr><td>N=32</td><td>2.36</td><td class='pos'>+1.20</td><td>2.30</td><td class='pos'>+1.52</td></tr><tr><td>N=100</td><td>2.56</td><td class='pos'>+1.40</td><td>3.90</td><td class='pos'>+3.12</td></tr></table>
+<h2>Per-group pages</h2><table class=nav><tr><th>Group</th><th>Emotion</th><th>mean genu ceiling uplift</th><th>mean blend ceiling uplift</th><th>link</th></tr>
+<tr><td>g00</td><td>contempt disdain loathing and detestation</td><td class='pos'>+1.50</td><td class='pos'>+3.24</td><td><a href="g00.html">open</a></td></tr>
+<tr><td>g01</td><td>sadness sorrow grief melancholy and heartache</td><td class='pos'>+0.85</td><td class='pos'>+2.40</td><td><a href="g01.html">open</a></td></tr>
+</table></body></html>

@@ -1,0 +1,107 @@
+<html><head><meta charset=utf-8><title>g00 - contempt disdain loathing and detestation</title><style>
+body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:1180px;margin:0 auto;padding:18px;color:#1a1a2e;background:#fafafe}
+h1{font-size:24px;margin:.2em 0}h2{font-size:19px;border-bottom:2px solid #4a4ae0;padding-bottom:4px;margin-top:1.4em}h3{font-size:16px;margin:.8em 0 .3em}
+.hdr{background:#eef0ff;border:1px solid #ccd;border-radius:8px;padding:10px 14px;font-size:12.5px;color:#333;line-height:1.5}
+.concl{background:#fff8e6;border:1px solid #e6d28a;border-radius:8px;padding:12px 16px;margin:14px 0}
+.concl li{margin:5px 0}
+table{border-collapse:collapse;width:100%;font-size:12.5px;margin:10px 0}
+th,td{border:1px solid #d0d0e0;padding:5px 8px;text-align:right}th{background:#4a4ae0;color:#fff}td:first-child,th:first-child{text-align:left}
+tr:nth-child(even){background:#f2f2fb}
+.pos{color:#0a7d28;font-weight:600}.neg{color:#c0281a;font-weight:600}
+.cell{border:1px solid #dde;border-radius:8px;padding:10px;margin:10px 0;background:#fff}
+.clip{display:flex;align-items:center;gap:10px;padding:4px 0;border-bottom:1px solid #eee;font-size:12px}
+.clip audio{height:30px}.rk{font-weight:700;color:#4a4ae0;width:52px}
+.mtr{font-family:monospace;font-size:11.5px;color:#444}
+.ref{background:#eafaf0;border:1px solid #b8e6c8}
+a{color:#4a4ae0}.nav td:first-child{text-align:left}
+.bot{color:#a33}
+</style></head><body>
+<p><a href="index.html">&larr; back to index</a></p>
+<h1>g00: contempt disdain loathing and detestation</h1>
+<div class="hdr"><b>Study:</b> best-of-100 voice-acting selection across speaker identities.
+<b>Model:</b> an 8B autoregressive expressive TTS model, generated WITH reference-voice conditioning
+(audio temperature 1.0, repetition penalty 1.1, text temperature 0.7, top-p 0.95, top-k 25, bf16).
+<b>Reference source:</b> a large open crowd-sourced corpus of expressive human speech (one distinct
+speaker clip per group, diverse emotions). <b>Reward:</b> combined = invWER x (norm_genu + norm_blend),
+where genu is a commercial-voice genuineness score (0-6) and blend an expressive-quality score (0-10),
+each min-max normalized across all generated clips; invWER = max(0, 1-WER) from multilingual ASR.
+<b>Achieved throughput:</b> 2.87 clips/s on a single GPU. </div>
+<p><b>English script:</b> You actually think your little apology means anything to me now? I have met more honest people crawling in the gutter than I ever found in your company. Do not ever mistake my silence for respect, because you have earned none of it.</p>
+<p><b>German script (translation):</b> Du glaubst tatsaechlich, deine kleine Entschuldigung wuerde mir jetzt noch irgendetwas bedeuten? Ich habe ehrlichere Menschen in der Gosse getroffen, als ich je in deiner Gesellschaft gefunden habe. Verwechsle mein Schweigen niemals mit Respekt, denn den hast du dir in keiner Weise verdient.</p>
+<p><b>Delivery instruction:</b> <i>Cold contempt and disdain, the voice low and sneering, dripping with icy loathing. High quality recording.</i></p>
+<div class="cell"><h3>Original reference voice</h3>
+<div class="clip ref"><span class="rk">REF</span><audio controls preload=none src="media/g00_orig_ref.mp3"></audio><span class="mtr">genu=0.53 blend=0.44</span></div>
+<h3 style='font-size:14px'>English &mdash; top 8 / bottom 2 of 100</h3>
+<div class="clip"><span class="rk">#1</span><audio controls preload=none src="media/g00__orig__English__r1.mp3"></audio><span class="mtr">combined=0.558 blend=1.46 genu=1.42 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#2</span><audio controls preload=none src="media/g00__orig__English__r2.mp3"></audio><span class="mtr">combined=0.446 blend=1.21 genu=1.60 invWER=0.79</span></div>
+<div class="clip"><span class="rk">#3</span><audio controls preload=none src="media/g00__orig__English__r3.mp3"></audio><span class="mtr">combined=0.426 blend=1.01 genu=1.16 invWER=0.98</span></div>
+<div class="clip"><span class="rk">#4</span><audio controls preload=none src="media/g00__orig__English__r4.mp3"></audio><span class="mtr">combined=0.392 blend=0.74 genu=1.13 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#5</span><audio controls preload=none src="media/g00__orig__English__r5.mp3"></audio><span class="mtr">combined=0.378 blend=0.95 genu=0.94 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#6</span><audio controls preload=none src="media/g00__orig__English__r6.mp3"></audio><span class="mtr">combined=0.374 blend=0.87 genu=1.01 invWER=0.98</span></div>
+<div class="clip"><span class="rk">#7</span><audio controls preload=none src="media/g00__orig__English__r7.mp3"></audio><span class="mtr">combined=0.372 blend=0.00 genu=1.50 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#8</span><audio controls preload=none src="media/g00__orig__English__r8.mp3"></audio><span class="mtr">combined=0.371 blend=0.80 genu=1.00 invWER=1.00</span></div>
+<div class="clip bot"><span class="rk">#99 (bottom)</span><audio controls preload=none src="media/g00__orig__English__r99.mp3"></audio><span class="mtr">combined=0.032 blend=2.33 genu=1.44 invWER=0.05</span></div>
+<div class="clip bot"><span class="rk">#100 (bottom)</span><audio controls preload=none src="media/g00__orig__English__r100.mp3"></audio><span class="mtr">combined=0.027 blend=1.72 genu=1.35 invWER=0.05</span></div>
+<h3 style='font-size:14px'>German &mdash; top 8 / bottom 2 of 100</h3>
+<div class="clip"><span class="rk">#1</span><audio controls preload=none src="media/g00__orig__German__r1.mp3"></audio><span class="mtr">combined=0.373 blend=0.47 genu=1.30 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#2</span><audio controls preload=none src="media/g00__orig__German__r2.mp3"></audio><span class="mtr">combined=0.345 blend=1.12 genu=0.77 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#3</span><audio controls preload=none src="media/g00__orig__German__r3.mp3"></audio><span class="mtr">combined=0.324 blend=0.50 genu=1.12 invWER=0.91</span></div>
+<div class="clip"><span class="rk">#4</span><audio controls preload=none src="media/g00__orig__German__r4.mp3"></audio><span class="mtr">combined=0.302 blend=0.51 genu=1.05 invWER=0.88</span></div>
+<div class="clip"><span class="rk">#5</span><audio controls preload=none src="media/g00__orig__German__r5.mp3"></audio><span class="mtr">combined=0.301 blend=0.11 genu=1.18 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#6</span><audio controls preload=none src="media/g00__orig__German__r6.mp3"></audio><span class="mtr">combined=0.281 blend=0.93 genu=0.62 invWER=0.93</span></div>
+<div class="clip"><span class="rk">#7</span><audio controls preload=none src="media/g00__orig__German__r7.mp3"></audio><span class="mtr">combined=0.270 blend=0.23 genu=0.96 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#8</span><audio controls preload=none src="media/g00__orig__German__r8.mp3"></audio><span class="mtr">combined=0.258 blend=0.27 genu=0.92 invWER=0.93</span></div>
+<div class="clip bot"><span class="rk">#99 (bottom)</span><audio controls preload=none src="media/g00__orig__German__r99.mp3"></audio><span class="mtr">combined=0.042 blend=2.71 genu=2.19 invWER=0.05</span></div>
+<div class="clip bot"><span class="rk">#100 (bottom)</span><audio controls preload=none src="media/g00__orig__German__r100.mp3"></audio><span class="mtr">combined=0.000 blend=6.21 genu=1.88 invWER=0.00</span></div>
+</div>
+<div class="cell"><h3>Voice-converted to a random speaker A &mdash; source sped +2%, target=Source-A_de_04</h3>
+<div class="clip ref"><span class="rk">REF</span><audio controls preload=none src="media/g00_vcA_ref.mp3"></audio><span class="mtr">genu=1.37 blend=1.18</span></div>
+<h3 style='font-size:14px'>English &mdash; top 8 / bottom 2 of 100</h3>
+<div class="clip"><span class="rk">#1</span><audio controls preload=none src="media/g00__vcA__English__r1.mp3"></audio><span class="mtr">combined=0.759 blend=1.20 genu=2.46 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#2</span><audio controls preload=none src="media/g00__vcA__English__r2.mp3"></audio><span class="mtr">combined=0.733 blend=1.90 genu=2.08 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#3</span><audio controls preload=none src="media/g00__vcA__English__r3.mp3"></audio><span class="mtr">combined=0.611 blend=1.30 genu=1.76 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#4</span><audio controls preload=none src="media/g00__vcA__English__r4.mp3"></audio><span class="mtr">combined=0.580 blend=1.09 genu=1.75 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#5</span><audio controls preload=none src="media/g00__vcA__English__r5.mp3"></audio><span class="mtr">combined=0.569 blend=0.69 genu=1.94 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#6</span><audio controls preload=none src="media/g00__vcA__English__r6.mp3"></audio><span class="mtr">combined=0.565 blend=0.27 genu=2.18 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#7</span><audio controls preload=none src="media/g00__vcA__English__r7.mp3"></audio><span class="mtr">combined=0.556 blend=0.89 genu=1.76 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#8</span><audio controls preload=none src="media/g00__vcA__English__r8.mp3"></audio><span class="mtr">combined=0.555 blend=0.00 genu=2.30 invWER=1.00</span></div>
+<div class="clip bot"><span class="rk">#99 (bottom)</span><audio controls preload=none src="media/g00__vcA__English__r99.mp3"></audio><span class="mtr">combined=0.046 blend=0.00 genu=0.06 invWER=1.00</span></div>
+<div class="clip bot"><span class="rk">#100 (bottom)</span><audio controls preload=none src="media/g00__vcA__English__r100.mp3"></audio><span class="mtr">combined=0.031 blend=0.00 genu=-0.00 invWER=1.00</span></div>
+<h3 style='font-size:14px'>German &mdash; top 8 / bottom 2 of 100</h3>
+<div class="clip"><span class="rk">#1</span><audio controls preload=none src="media/g00__vcA__German__r1.mp3"></audio><span class="mtr">combined=1.907 blend=7.20 genu=4.25 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#2</span><audio controls preload=none src="media/g00__vcA__German__r2.mp3"></audio><span class="mtr">combined=1.406 blend=5.25 genu=3.30 invWER=0.93</span></div>
+<div class="clip"><span class="rk">#3</span><audio controls preload=none src="media/g00__vcA__German__r3.mp3"></audio><span class="mtr">combined=1.396 blend=5.13 genu=3.86 invWER=0.86</span></div>
+<div class="clip"><span class="rk">#4</span><audio controls preload=none src="media/g00__vcA__German__r4.mp3"></audio><span class="mtr">combined=1.322 blend=4.35 genu=3.45 invWER=0.93</span></div>
+<div class="clip"><span class="rk">#5</span><audio controls preload=none src="media/g00__vcA__German__r5.mp3"></audio><span class="mtr">combined=1.315 blend=4.82 genu=3.29 invWER=0.91</span></div>
+<div class="clip"><span class="rk">#6</span><audio controls preload=none src="media/g00__vcA__German__r6.mp3"></audio><span class="mtr">combined=1.286 blend=4.42 genu=3.09 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#7</span><audio controls preload=none src="media/g00__vcA__German__r7.mp3"></audio><span class="mtr">combined=1.195 blend=4.27 genu=3.36 invWER=0.86</span></div>
+<div class="clip"><span class="rk">#8</span><audio controls preload=none src="media/g00__vcA__German__r8.mp3"></audio><span class="mtr">combined=1.179 blend=3.94 genu=3.17 invWER=0.91</span></div>
+<div class="clip bot"><span class="rk">#99 (bottom)</span><audio controls preload=none src="media/g00__vcA__German__r99.mp3"></audio><span class="mtr">combined=0.000 blend=0.00 genu=-0.14 invWER=0.95</span></div>
+<div class="clip bot"><span class="rk">#100 (bottom)</span><audio controls preload=none src="media/g00__vcA__German__r100.mp3"></audio><span class="mtr">combined=0.000 blend=4.51 genu=2.36 invWER=0.00</span></div>
+</div>
+<div class="cell"><h3>Voice-converted to a random speaker B &mdash; source sped +47%, target=Source-B</h3>
+<div class="clip ref"><span class="rk">REF</span><audio controls preload=none src="media/g00_vcB_ref.mp3"></audio><span class="mtr">genu=1.59 blend=0.00</span></div>
+<h3 style='font-size:14px'>English &mdash; top 8 / bottom 2 of 100</h3>
+<div class="clip"><span class="rk">#1</span><audio controls preload=none src="media/g00__vcB__English__r1.mp3"></audio><span class="mtr">combined=0.739 blend=0.30 genu=2.92 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#2</span><audio controls preload=none src="media/g00__vcB__English__r2.mp3"></audio><span class="mtr">combined=0.707 blend=0.37 genu=2.74 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#3</span><audio controls preload=none src="media/g00__vcB__English__r3.mp3"></audio><span class="mtr">combined=0.670 blend=0.75 genu=2.35 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#4</span><audio controls preload=none src="media/g00__vcB__English__r4.mp3"></audio><span class="mtr">combined=0.646 blend=0.00 genu=2.70 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#5</span><audio controls preload=none src="media/g00__vcB__English__r5.mp3"></audio><span class="mtr">combined=0.644 blend=1.17 genu=1.97 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#6</span><audio controls preload=none src="media/g00__vcB__English__r6.mp3"></audio><span class="mtr">combined=0.629 blend=1.22 genu=1.88 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#7</span><audio controls preload=none src="media/g00__vcB__English__r7.mp3"></audio><span class="mtr">combined=0.606 blend=0.25 genu=2.37 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#8</span><audio controls preload=none src="media/g00__vcB__English__r8.mp3"></audio><span class="mtr">combined=0.604 blend=0.91 genu=1.95 invWER=1.00</span></div>
+<div class="clip bot"><span class="rk">#99 (bottom)</span><audio controls preload=none src="media/g00__vcB__English__r99.mp3"></audio><span class="mtr">combined=0.209 blend=0.27 genu=0.93 invWER=0.74</span></div>
+<div class="clip bot"><span class="rk">#100 (bottom)</span><audio controls preload=none src="media/g00__vcB__English__r100.mp3"></audio><span class="mtr">combined=0.151 blend=0.00 genu=1.10 invWER=0.53</span></div>
+<h3 style='font-size:14px'>German &mdash; top 8 / bottom 2 of 100</h3>
+<div class="clip"><span class="rk">#1</span><audio controls preload=none src="media/g00__vcB__German__r1.mp3"></audio><span class="mtr">combined=0.883 blend=2.44 genu=2.54 invWER=0.93</span></div>
+<div class="clip"><span class="rk">#2</span><audio controls preload=none src="media/g00__vcB__German__r2.mp3"></audio><span class="mtr">combined=0.811 blend=2.39 genu=2.14 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#3</span><audio controls preload=none src="media/g00__vcB__German__r3.mp3"></audio><span class="mtr">combined=0.790 blend=2.02 genu=2.27 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#4</span><audio controls preload=none src="media/g00__vcB__German__r4.mp3"></audio><span class="mtr">combined=0.648 blend=1.38 genu=2.01 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#5</span><audio controls preload=none src="media/g00__vcB__German__r5.mp3"></audio><span class="mtr">combined=0.646 blend=1.29 genu=2.05 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#6</span><audio controls preload=none src="media/g00__vcB__German__r6.mp3"></audio><span class="mtr">combined=0.625 blend=1.31 genu=1.94 invWER=0.95</span></div>
+<div class="clip"><span class="rk">#7</span><audio controls preload=none src="media/g00__vcB__German__r7.mp3"></audio><span class="mtr">combined=0.553 blend=0.84 genu=1.96 invWER=0.93</span></div>
+<div class="clip"><span class="rk">#8</span><audio controls preload=none src="media/g00__vcB__German__r8.mp3"></audio><span class="mtr">combined=0.514 blend=0.82 genu=1.73 invWER=0.95</span></div>
+<div class="clip bot"><span class="rk">#99 (bottom)</span><audio controls preload=none src="media/g00__vcB__German__r99.mp3"></audio><span class="mtr">combined=0.055 blend=0.00 genu=0.12 invWER=0.93</span></div>
+<div class="clip bot"><span class="rk">#100 (bottom)</span><audio controls preload=none src="media/g00__vcB__German__r100.mp3"></audio><span class="mtr">combined=0.000 blend=3.58 genu=1.52 invWER=0.00</span></div>
+</div>
+</body></html>

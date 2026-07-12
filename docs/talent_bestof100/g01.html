@@ -1,0 +1,52 @@
+<html><head><meta charset=utf-8><title>g01 - sadness sorrow grief melancholy and heartache</title><style>
+body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:1180px;margin:0 auto;padding:18px;color:#1a1a2e;background:#fafafe}
+h1{font-size:24px;margin:.2em 0}h2{font-size:19px;border-bottom:2px solid #4a4ae0;padding-bottom:4px;margin-top:1.4em}h3{font-size:16px;margin:.8em 0 .3em}
+.hdr{background:#eef0ff;border:1px solid #ccd;border-radius:8px;padding:10px 14px;font-size:12.5px;color:#333;line-height:1.5}
+.concl{background:#fff8e6;border:1px solid #e6d28a;border-radius:8px;padding:12px 16px;margin:14px 0}
+.concl li{margin:5px 0}
+table{border-collapse:collapse;width:100%;font-size:12.5px;margin:10px 0}
+th,td{border:1px solid #d0d0e0;padding:5px 8px;text-align:right}th{background:#4a4ae0;color:#fff}td:first-child,th:first-child{text-align:left}
+tr:nth-child(even){background:#f2f2fb}
+.pos{color:#0a7d28;font-weight:600}.neg{color:#c0281a;font-weight:600}
+.cell{border:1px solid #dde;border-radius:8px;padding:10px;margin:10px 0;background:#fff}
+.clip{display:flex;align-items:center;gap:10px;padding:4px 0;border-bottom:1px solid #eee;font-size:12px}
+.clip audio{height:30px}.rk{font-weight:700;color:#4a4ae0;width:52px}
+.mtr{font-family:monospace;font-size:11.5px;color:#444}
+.ref{background:#eafaf0;border:1px solid #b8e6c8}
+a{color:#4a4ae0}.nav td:first-child{text-align:left}
+.bot{color:#a33}
+</style></head><body>
+<p><a href="index.html">&larr; back to index</a></p>
+<h1>g01: sadness sorrow grief melancholy and heartache</h1>
+<div class="hdr"><b>Study:</b> best-of-100 voice-acting selection across speaker identities.
+<b>Model:</b> an 8B autoregressive expressive TTS model, generated WITH reference-voice conditioning
+(audio temperature 1.0, repetition penalty 1.1, text temperature 0.7, top-p 0.95, top-k 25, bf16).
+<b>Reference source:</b> a large open crowd-sourced corpus of expressive human speech (one distinct
+speaker clip per group, diverse emotions). <b>Reward:</b> combined = invWER x (norm_genu + norm_blend),
+where genu is a commercial-voice genuineness score (0-6) and blend an expressive-quality score (0-10),
+each min-max normalized across all generated clips; invWER = max(0, 1-WER) from multilingual ASR.
+<b>Achieved throughput:</b> 2.87 clips/s on a single GPU. </div>
+<p><b>English script:</b> We built a whole life together, brick by brick, dream by dream. And now I walk through these empty rooms and all I can hear is the echo of everything we used to be. I miss you so much that some mornings I can barely get out of bed.</p>
+<p><b>German script (translation):</b> Wir haben ein ganzes Leben zusammen aufgebaut, Stein fuer Stein, Traum fuer Traum. Und jetzt gehe ich durch diese leeren Raeume, und alles, was ich houere, ist das Echo von allem, was wir einmal waren. Ich vermisse dich so sehr, dass ich an manchen Morgen kaum aus dem Bett komme.</p>
+<p><b>Delivery instruction:</b> <i>Quiet sorrow and aching heartache, the voice trembling with grief, thick with unshed tears. High quality recording.</i></p>
+<div class="cell"><h3>Original reference voice</h3>
+<div class="clip ref"><span class="rk">REF</span><audio controls preload=none src="media/g01_orig_ref.mp3"></audio><span class="mtr">genu=- blend=-</span></div>
+</div>
+<div class="cell"><h3>Voice-converted to a random speaker A &mdash; source sped +2%, target=Source-A_de_09</h3>
+<div class="clip ref"><span class="rk">REF</span><audio controls preload=none src="media/g01_vcA_ref.mp3"></audio><span class="mtr">genu=- blend=-</span></div>
+</div>
+<div class="cell"><h3>Voice-converted to a random speaker B &mdash; source sped +16%, target=Source-B</h3>
+<div class="clip ref"><span class="rk">REF</span><audio controls preload=none src="media/g01_vcB_ref.mp3"></audio><span class="mtr">genu=1.12 blend=2.26</span></div>
+<h3 style='font-size:14px'>English &mdash; top 8 / bottom 2 of 100</h3>
+<div class="clip"><span class="rk">#1</span><audio controls preload=none src="media/g01__vcB__English__r1.mp3"></audio><span class="mtr">combined=0.984 blend=4.66 genu=1.53 invWER=0.96</span></div>
+<div class="clip"><span class="rk">#2</span><audio controls preload=none src="media/g01__vcB__English__r2.mp3"></audio><span class="mtr">combined=0.878 blend=3.15 genu=1.88 invWER=0.98</span></div>
+<div class="clip"><span class="rk">#3</span><audio controls preload=none src="media/g01__vcB__English__r3.mp3"></audio><span class="mtr">combined=0.728 blend=2.44 genu=1.57 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#4</span><audio controls preload=none src="media/g01__vcB__English__r4.mp3"></audio><span class="mtr">combined=0.697 blend=1.64 genu=1.92 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#5</span><audio controls preload=none src="media/g01__vcB__English__r5.mp3"></audio><span class="mtr">combined=0.694 blend=1.65 genu=1.97 invWER=0.98</span></div>
+<div class="clip"><span class="rk">#6</span><audio controls preload=none src="media/g01__vcB__English__r6.mp3"></audio><span class="mtr">combined=0.639 blend=3.06 genu=1.53 invWER=0.80</span></div>
+<div class="clip"><span class="rk">#7</span><audio controls preload=none src="media/g01__vcB__English__r7.mp3"></audio><span class="mtr">combined=0.633 blend=2.20 genu=1.30 invWER=1.00</span></div>
+<div class="clip"><span class="rk">#8</span><audio controls preload=none src="media/g01__vcB__English__r8.mp3"></audio><span class="mtr">combined=0.613 blend=4.00 genu=1.42 invWER=0.67</span></div>
+<div class="clip bot"><span class="rk">#99 (bottom)</span><audio controls preload=none src="media/g01__vcB__English__r99.mp3"></audio><span class="mtr">combined=0.004 blend=0.00 genu=-0.12 invWER=1.00</span></div>
+<div class="clip bot"><span class="rk">#100 (bottom)</span><audio controls preload=none src="media/g01__vcB__English__r100.mp3"></audio><span class="mtr">combined=0.000 blend=1.41 genu=1.29 invWER=0.00</span></div>
+</div>
+</body></html>
