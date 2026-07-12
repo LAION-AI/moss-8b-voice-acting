@@ -1,0 +1,17 @@
+compute_environment: LOCAL_MACHINE
+debug: false
+distributed_type: DEEPSPEED
+downcast_bf16: "no"
+deepspeed_config:
+  # Path to ds_zero3_1m.json (same directory as this file). Use an absolute path if launching
+  # from elsewhere, e.g. /path/to/training/ds_zero3_1m.json
+  deepspeed_config_file: ds_zero3_1m.json
+  zero3_init_flag: false
+enable_cpu_affinity: false
+machine_rank: 0
+main_training_function: main
+num_machines: 1
+num_processes: 7
+rdzv_backend: static
+same_network: true
+use_cpu: false

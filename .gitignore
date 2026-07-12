@@ -1,0 +1,11 @@
+# Checkpoint split-zip parts are distributed as GitHub Release assets, NOT committed to git.
+*.zip
+*.z0*
+*.z1*
+stage/
+
+# Python / misc
+__pycache__/
+*.pyc
+.DS_Store
+*.swp

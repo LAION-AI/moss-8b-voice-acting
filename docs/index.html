@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MOSS-TTS-v1.5 8B Voice-Acting — Demos & Evals</title>
+<style>
+ :root{--bg:#0f1117;--card:#1a1d27;--acc:#6ea8fe;--acc2:#7ee0a8;--tx:#e8eaf0;--mut:#9aa0ac;}
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+ .wrap{max-width:960px;margin:0 auto;padding:34px 18px 90px}
+ h1{font-size:30px;margin:.1em 0}
+ .sub{color:var(--mut);margin:.3em 0 26px;font-size:15px}
+ h2{font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);border-bottom:1px solid #2a3040;padding-bottom:7px;margin:34px 0 14px}
+ a.card{display:block;text-decoration:none;background:var(--card);border:1px solid #262b38;border-radius:12px;padding:15px 18px;margin:11px 0;color:var(--tx);transition:border-color .15s,transform .05s}
+ a.card:hover{border-color:var(--acc);transform:translateY(-1px)}
+ .t{font-size:17px;font-weight:600;color:var(--acc2)}
+ .d{color:var(--mut);font-size:14px;margin-top:3px}
+ .foot{color:#6b7280;font-size:13px;margin-top:40px;border-top:1px solid #2a3040;padding-top:16px}
+ code{background:#141824;border:1px solid #2a3040;border-radius:5px;padding:1px 6px;font-size:13px}
+</style></head><body><div class="wrap">
+<h1>MOSS-TTS-v1.5 8B — Voice-Acting</h1>
+<p class="sub">Expressive, instruction-controlled text-to-speech. A Qwen3-8B backbone with a
+32-codebook delay audio head at 24&nbsp;kHz. Live demo grids and evaluation dashboards for the
+fine-tuned model. Play the clips directly in your browser.</p>
+
+<h2>Samples</h2>
+<a class="card" href="paraphrase_clones.html">
+  <div class="t">Voice-Cloning + Paraphrase</div>
+  <div class="d">Original real clip vs. a generated clone that keeps the voice &amp; style but speaks a freshly reworded line — data-augmentation demo across several source styles and two languages.</div></a>
+
+<h2>Rankings</h2>
+<a class="card" href="genuineness_ranking.html">
+  <div class="t">Genuineness ranking (best-of-10)</div>
+  <div class="d">Ten temperature-1.0 takes per prompt, ranked by two independent VoiceCLAP genuineness probes (large-v2 3584-d &amp; commercial 768-d). Top-3 / bottom-2 per probe.</div></a>
+<a class="card" href="reward_ranking.html">
+  <div class="t">Combined-reward ranking (best-of-10)</div>
+  <div class="d">The same takes ranked by a combined reward: <code>invWER × (norm(blend) + norm(genuineness))</code>, folding in perceptual quality and transcription fidelity.</div></a>
+
+<h2>Benchmarks</h2>
+<a class="card" href="gridsearch.html">
+  <div class="t">Generation-settings grid search</div>
+  <div class="d">Temperature × repetition-penalty sweep, scored on WER, blend quality, and genuineness — with and without a reference clip. Source of the recommended defaults.</div></a>
+<a class="card" href="eval_bestof10.html">
+  <div class="t">Best-of-10 uplift</div>
+  <div class="d">Voice-clone 20 reference clips (EN + DE), 10 takes each. Can the best-of-10 take out-score the real human reference on quality &amp; genuineness? Uplift analysis included.</div></a>
+<a class="card" href="eval_bestof32.html">
+  <div class="t">Best-of-32 uplift</div>
+  <div class="d">50 references × 2 languages, 32 batched takes each. Larger best-of-N pool — how much extra uplift ceiling does drawing 32 seeds buy over 10?</div></a>
+
+<h2>Checkpoint eval</h2>
+<a class="card" href="checkpoint_eval.html">
+  <div class="t">Held-out emotional prompts</div>
+  <div class="d">The trained 8B checkpoint rendering a set of held-out emotional prompts (no reference audio) — a quick qualitative read on expressive range.</div></a>
+
+<div class="foot">
+  MOSS-TTS-v1.5 8B voice-acting · Apache-2.0 · reference clips in the eval grids come from a public
+  emotion-attribute reference set (provenance kept generic). Audio is served as external mp3 files
+  alongside each page.
+</div>
+</div></body></html>

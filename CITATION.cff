@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this model or code, please cite it as below."
+title: "MOSS-TTS-v1.5 8B — Voice-Acting fine-tune"
+authors:
+  - name: "LAION"
+date-released: 2026-07-12
+license: Apache-2.0
+url: "https://huggingface.co/laion/moss-tts-v1.5-8b-voice-acting"
+abstract: >
+  An expressive, instruction-controlled text-to-speech model: a fine-tune of MOSS-TTS-v1.5 8B
+  (Qwen3-8B backbone with a 32-codebook delay audio head, MossTTSDelay, at 24 kHz) for voice
+  acting and emotional voice cloning, with fast batched inference and reward-guided best-of-N
+  selection.
