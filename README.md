@@ -94,7 +94,8 @@ Hosted on GitHub Pages (play the audio in-browser):
   [best-of-16, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best16.html) ·
   [best-of-60, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best60.html) ·
   [16 vs 128 takes — qualitative gain](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_16vs128.html) ·
-  [emotion-prompting study](https://projects.laion.ai/moss-8b-voice-acting/emotion_prompting_study.html)
+  [emotion-prompting study](https://projects.laion.ai/moss-8b-voice-acting/emotion_prompting_study.html) ·
+  [emotion grids: all insights + top-3 per group](https://projects.laion.ai/moss-8b-voice-acting/emotion_prompting_grids.html)
 - **Scaling & Sidon study (LGT):** [best-of-N audio samples](https://projects.laion.ai/moss-8b-voice-acting/lgt_bestof_samples.html) ·
   [report](https://projects.laion.ai/moss-8b-voice-acting/lgt_study_report.html)
 
@@ -161,6 +162,7 @@ ecstatic / disgusted / astonished? 6 emotions × 20 instruction styles × 3 emot
 arousal, valence, expressiveness — plus clip volume (rms dB), Chatterbox VoiceEncoder speaker
 similarity, and VoiceCLAP genuineness.
 [Full results with audio](https://projects.laion.ai/moss-8b-voice-acting/emotion_prompting_study.html).
+[All insights + every group's top-3 takes with audio](https://projects.laion.ai/moss-8b-voice-acting/emotion_prompting_grids.html).
 Headlines: escalation-arc and loudness instructions are the most reliable intensity levers; the
 emotional *text* itself carries most of the emotion (neutral instructions already score high, and
 for surprise they win outright); an *empty* instruction gives the best reference-voice similarity;
