@@ -91,11 +91,64 @@ Hosted on GitHub Pages (play the audio in-browser):
   [top-3 grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_top3.html) ·
   [best-of-16/8/6/4 grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_bestofn.html) ·
   [prompt-adherence reward grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_promptreward.html) ·
-  [best-of-16, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best16.html)
+  [best-of-16, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best16.html) ·
+  [best-of-60, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best60.html)
 - **Scaling & Sidon study (LGT):** [best-of-N audio samples](https://projects.laion.ai/moss-8b-voice-acting/lgt_bestof_samples.html) ·
   [report](https://projects.laion.ai/moss-8b-voice-acting/lgt_study_report.html)
 
 Landing page: <https://projects.laion.ai/moss-8b-voice-acting/>
+
+
+## Experiment write-ups (what the demo pages show)
+
+All pages are self-contained HTML with embedded audio — click any link above and press play.
+Each experiment uses this model (`laion/moss-tts-v1.5-8b-voice-acting`) with the mono 24 kHz
+`OpenMOSS-Team/MOSS-Audio-Tokenizer` codec, scored with Parakeet-TDT-0.6b-v3 (word error rate),
+and `laion/voiceclap-commercial` MLP heads (blend = polished/professional voice quality,
+genuineness = emotionally authentic delivery).
+
+### 1 · LGT scaling & Sidon study
+50 reference voices from LAION's Got Talent × 3 reference conditions (original clip /
+Chatterbox-VC to a German-Emolia speaker / VC to a test reference) × EN+DE scripts ×
+up to 1000 takes each (~58k generated clips). Findings: best-of-N reliably beats the cloned
+reference (uplift +0.81 reward, 100% of groups); reward keeps rising to k=1000 with a knee at
+k≈300–500; Sidon speech restoration before scoring is neutral for selection; ASR dominates
+scoring cost. Listen: [samples](https://projects.laion.ai/moss-8b-voice-acting/lgt_bestof_samples.html) ·
+[report](https://projects.laion.ai/moss-8b-voice-acting/lgt_study_report.html).
+
+### 2 · DramaBox prompting-style ablation
+Prompts come from the [Voice-Acting-Pipeline](https://github.com/LAION-AI/Voice-Acting-Pipeline)
+repository — 79k pre-generated **DramaBox** prompts
+([data folder](https://github.com/LAION-AI/Voice-Acting-Pipeline/tree/main/data)): stage
+directions plus spoken dialogue in "double quotes", most with a two-scene "CUT TO:" emotional
+switch (character-consistent, CC), some single-emotion (non-CC). We always put the extracted
+dialogue in the MOSS *text* field and ablate the *instruction*: full DramaBox prompt
+(with_dialogue) vs stage-directions-only (no_dialogue) — crossed with reference audio:
+none (temp 0.8, rep-penalty 1.1) vs a random high-intensity emotion snippet from
+[Emotion-Voice-Attribute-Reference-Snippets](https://huggingface.co/datasets/TTS-AGI/Emotion-Voice-Attribute-Reference-Snippets-DACVAE-Wave)
+(temp 1.0). 25 prompts × 4 variants × 60 takes.
+
+What you can hear/see on the pages:
+- [Analysis & plots](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation.html):
+  directions-only prompts score slightly higher reward but keeping the dialogue in the
+  instruction gives better word accuracy; a random-emotion reference *hurts* both reward and
+  prompt adherence (it pulls delivery toward the reference and away from the written direction);
+  CC (two-scene) prompts are harder than single-emotion ones; best-of-k gains flatten around k≈8.
+- [Top-3 grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_top3.html):
+  the 3 highest-reward takes per prompt × variant, with every score on every player.
+- [Best-of-N grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_bestofn.html):
+  the best take at budgets 16/8/6/4 — hear the quality drop with fewer samples.
+- [Prompt-adherence rewards](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_promptreward.html):
+  re-ranking by prompt-sim×invWER and invWER×(norm prompt-sim+blend+genu). Key finding:
+  the standard reward is nearly uncorrelated with how well the delivery matches the written
+  direction (r≈0) — if adherence matters, it must be part of the reward.
+- [Best-of-16](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best16.html) /
+  [Best-of-60](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best60.html),
+  three rewards side-by-side: the same take pool ranked by all three rewards in three columns —
+  hear how the "winner" changes with the optimisation target.
+
+**prompt-sim** on these pages = VoiceCLAP-commercial cosine similarity between the direction
+text (dialogue removed) and the generated audio — "did the voice actually perform the direction".
 
 ## Checkpoint download
 
