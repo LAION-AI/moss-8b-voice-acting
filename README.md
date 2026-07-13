@@ -93,7 +93,8 @@ Hosted on GitHub Pages (play the audio in-browser):
   [prompt-adherence reward grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_promptreward.html) ·
   [best-of-16, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best16.html) ·
   [best-of-60, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best60.html) ·
-  [16 vs 128 takes — qualitative gain](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_16vs128.html)
+  [16 vs 128 takes — qualitative gain](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_16vs128.html) ·
+  [emotion-prompting study](https://projects.laion.ai/moss-8b-voice-acting/emotion_prompting_study.html)
 - **Scaling & Sidon study (LGT):** [best-of-N audio samples](https://projects.laion.ai/moss-8b-voice-acting/lgt_bestof_samples.html) ·
   [report](https://projects.laion.ai/moss-8b-voice-acting/lgt_study_report.html)
 
@@ -150,6 +151,20 @@ What you can hear/see on the pages:
 - [16 vs 128 takes](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_16vs128.html):
   12 diverse prompts expanded from 16 to 128 takes (no-ref) — best-of-16 vs top-3-of-128 per reward,
   with gain statistics (mean best-take reward +14-17%, ~85% of groups find a better take in 128).
+
+### 3 · Emotion-prompting study
+Which instruction wording makes the model sound genuinely furious / terrified / heartbroken /
+ecstatic / disgusted / astonished? 6 emotions × 20 instruction styles × 3 emotional texts × 4 takes
+(plus speaker-similarity and genuineness template arms), scored with
+[Empathic-Insight-Voice-Plus](https://huggingface.co/laion/Empathic-Insight-Voice-Plus)
+([emotion-annotations](https://github.com/LAION-AI/emotion-annotations)) — target-emotion score,
+arousal, valence, expressiveness — plus clip volume (rms dB), Chatterbox VoiceEncoder speaker
+similarity, and VoiceCLAP genuineness.
+[Full results with audio](https://projects.laion.ai/moss-8b-voice-acting/emotion_prompting_study.html).
+Headlines: escalation-arc and loudness instructions are the most reliable intensity levers; the
+emotional *text* itself carries most of the emotion (neutral instructions already score high, and
+for surprise they win outright); an *empty* instruction gives the best reference-voice similarity;
+plain control instructions beat every "be genuine" template on genuineness.
 
 **prompt-sim** on these pages = VoiceCLAP-commercial cosine similarity between the direction
 text (dialogue removed) and the generated audio — "did the voice actually perform the direction".
