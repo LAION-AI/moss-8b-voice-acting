@@ -87,6 +87,11 @@ Hosted on GitHub Pages (play the audio in-browser):
   [Best-of-10 uplift](https://projects.laion.ai/moss-8b-voice-acting/eval_bestof10.html) ·
   [Best-of-32 uplift](https://projects.laion.ai/moss-8b-voice-acting/eval_bestof32.html)
 - **Checkpoint eval:** [Held-out emotional prompts](https://projects.laion.ai/moss-8b-voice-acting/checkpoint_eval.html)
+- **Prompting ablation (DramaBox):** [dialogue-in-instruction vs directions-only + emotion-reference](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation.html) ·
+  [top-3 grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_top3.html) ·
+  [best-of-16/8/6/4 grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_bestofn.html)
+- **Scaling & Sidon study (LGT):** [best-of-N audio samples](https://projects.laion.ai/moss-8b-voice-acting/lgt_bestof_samples.html) ·
+  [report](https://projects.laion.ai/moss-8b-voice-acting/lgt_study_report.html)
 
 Landing page: <https://projects.laion.ai/moss-8b-voice-acting/>
 
