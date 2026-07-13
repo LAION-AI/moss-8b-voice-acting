@@ -109,3 +109,5 @@ zip parts. See [`checkpoint/README.md`](checkpoint/README.md) for the reassemble
 ## Citation
 
 See [`CITATION.cff`](CITATION.cff). Model and code are released under Apache-2.0.
+
+- **Scaling study:** [throughput + best-of-N plateau + Sidon](https://projects.laion.ai/moss-8b-voice-acting/scaling_pilot/index.html) · [🎧 Top-3 samples per group](https://projects.laion.ai/moss-8b-voice-acting/scaling_pilot/samples.html)
