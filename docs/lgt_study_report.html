@@ -1,0 +1,149 @@
+<style>
+:root{
+  --bg:#0d1017; --panel:#141a25; --panel2:#101620; --line:#232c3b;
+  --ink:#e7edf5; --mut:#8a95a8; --dim:#5f6b7e;
+  --acc:#5fd0c4; --acc2:#e8b062; --good:#6bd08a; --bad:#e0796b;
+  --mono:ui-monospace,"JetBrains Mono","SF Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:
+  radial-gradient(1200px 500px at 80% -10%, #16202e 0%, transparent 60%),
+  var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:40px 22px 90px}
+.mono{font-family:var(--mono)}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:14px}
+.hd h1{font-family:var(--mono);font-weight:700;font-size:30px;line-height:1.15;margin:0 0 12px;
+  letter-spacing:-.01em;text-wrap:balance}
+.hd .hl{color:var(--acc)}
+.sub{color:var(--mut);max-width:66ch;font-size:15px}
+.runbar{display:flex;flex-wrap:wrap;gap:0;margin-top:22px;border:1px solid var(--line);border-radius:10px;
+  overflow:hidden;background:var(--panel2)}
+.runbar>div{flex:1 1 180px;padding:12px 16px;border-right:1px solid var(--line)}
+.runbar>div:last-child{border-right:0}
+.runbar span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.runbar b{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:26px 0 8px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:16px 14px;
+  border-top:2px solid var(--acc)}
+.kpi:nth-child(3){border-top-color:var(--acc2)}
+.kv{font-family:var(--mono);font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.kl{font-size:12px;color:var(--mut);margin-top:6px;line-height:1.35}
+.kn{font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-top:6px;letter-spacing:.03em}
+.panel{margin-top:40px;padding-top:8px;border-top:1px solid var(--line)}
+.ph{display:flex;align-items:baseline;gap:14px;margin:18px 0 10px}
+.pn{font-family:var(--mono);font-size:13px;color:var(--acc);font-weight:700}
+.ph h2{font-family:var(--mono);font-size:19px;font-weight:700;margin:0;letter-spacing:-.01em}
+h3{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:22px 0 8px}
+.lead{font-size:15px;color:var(--ink);max-width:70ch}
+.note{font-size:13.5px;color:var(--mut);max-width:72ch;border-left:2px solid var(--line);padding-left:14px;margin-top:14px}
+.tw{overflow-x:auto;margin:12px 0}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:8px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--dim);font-weight:600;font-size:11px;letter-spacing:.05em;text-transform:uppercase;
+  border-bottom:1px solid var(--line)}
+td:first-child,th:first-child{text-align:left;color:var(--ink)}
+tbody tr:hover{background:#161d29}
+.dp{color:var(--good)} .dn{color:var(--bad)} .d0{color:var(--dim)}
+.bars{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.barrow{display:grid;grid-template-columns:220px 1fr;grid-template-rows:auto auto;gap:2px 16px;align-items:center}
+.barlab{font-size:13.5px;color:var(--ink)}
+.bartrack{position:relative;background:var(--panel2);border-radius:6px;height:26px;display:flex;align-items:center;border:1px solid var(--line)}
+.bar{height:100%;background:linear-gradient(90deg,#2f7d78,var(--acc));border-radius:5px 0 0 5px;min-width:3px}
+.barval{position:absolute;right:10px;font-family:var(--mono);font-size:12px;color:var(--ink);font-variant-numeric:tabular-nums}
+.barnote{grid-column:2;font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:.03em}
+.barlab{grid-row:1 / span 2}
+.chart{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px 10px 6px;margin:14px 0}
+.chart svg{width:100%;height:auto;display:block}
+.grid{stroke:#1c2534;stroke-width:1}
+.tick{stroke:#334053;stroke-width:1}
+.axl{fill:var(--dim);font-family:var(--mono);font-size:10.5px}
+.axttl{fill:var(--mut);font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+.pt{fill:#7fdccf;stroke:#0d1017;stroke-width:1}
+.ptstart{fill:var(--acc2)} .startlab{fill:var(--acc2);font-family:var(--mono);font-size:11px}
+.ptend{fill:var(--acc);stroke:#0d1017;stroke-width:1.5}
+.ptglow{fill:none;stroke:var(--acc);stroke-width:1;opacity:.4}
+.endlab{fill:var(--acc);font-family:var(--mono);font-size:12px;font-weight:600}
+.foot{margin-top:44px;padding-top:8px;border-top:1px solid var(--line)}
+.foot ul{list-style:none;padding:0;margin:12px 0 0}
+.foot li{font-size:13.5px;color:var(--mut);padding:9px 0 9px 20px;border-bottom:1px solid var(--panel);position:relative;max-width:76ch}
+.foot li:before{content:"▸";position:absolute;left:0;color:var(--acc);font-size:11px;top:11px}
+.foot b{color:var(--ink);font-weight:600}
+@media(max-width:720px){.kpis{grid-template-columns:repeat(2,1fr)}.hd h1{font-size:24px}
+  .barrow{grid-template-columns:1fr}.barlab{grid-row:auto}.runbar>div{flex-basis:50%}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<div class="wrap">
+<header class="hd">
+  <div class="eyebrow">LAION · Voice-Acting Data Pipeline · reproducibility run</div>
+  <h1>MOSS-8B LGT <span class="hl">best-of-N</span> — scaling &amp; Sidon study</h1>
+  <p class="sub">50 LAION's-Got-Talent voices × 3 reference conditions × EN/DE, plus named-reference
+  fair-text groups and an n=1000 scaling sweep. Every clip scored with invWER (Parakeet-TDT-0.6b-v3)
+  and VoiceCLAP blend + genuineness heads; ranked by <span class="mono">reward = invWER · (norm·genu + norm·blend)</span>.</p>
+  <div class="runbar">
+    <div><span>model</span><b>moss-tts-v1.5-8b-voice-acting</b></div>
+    <div><span>codec</span><b>MOSS-Audio-Tokenizer · 24kHz mono</b></div>
+    <div><span>clips scored</span><b>70,893</b></div>
+    <div><span>hardware</span><b>8 × A100-80GB</b></div>
+  </div>
+</header>
+<section class="kpis">
+<div class="kpi"><div class="kv">0.826</div><div class="kl">base best-of-100 reward</div><div class="kn"></div></div>
+<div class="kpi"><div class="kv">+0.808</div><div class="kl">uplift vs cloned reference</div><div class="kn">100% of groups ↑</div></div>
+<div class="kpi"><div class="kv"><span class="dn">-0.001</span></div><div class="kl">Sidon Δ reward</div><div class="kn">≈ neutral</div></div>
+<div class="kpi"><div class="kv">1000</div><div class="kl">plateau k (95% of gain)</div><div class="kn">still rising at 1000</div></div>
+<div class="kpi"><div class="kv">0.51</div><div class="kl">gen clips/s/GPU</div><div class="kn">batched ×100</div></div>
+</section>
+<section class="panel"><div class="ph"><span class="pn">01</span><h2>Best-of-N reward &amp; uplift</h2></div>
+<p class="lead">Across all 300 base cells, the best-of-100 take beats the reference it was cloned from in <b>100%</b> of cases (uplift <b>+0.808</b> reward). The cloned reference speaks different words than the eval script, so its invWER is low by construction — best-of-N reliably recovers an on-script, high-quality take.</p>
+<div class="tw"><table><thead><tr><th>condition</th><th>n</th><th>best reward</th><th>mean reward</th><th>best invWER</th><th>uplift</th><th>↑</th></tr></thead><tbody><tr><td>orig (raw LGT ref)</td><td>100</td><td>0.821</td><td>0.396</td><td>0.866</td><td><span class="dp">+0.803</span></td><td>100%</td></tr><tr><td>emolia_vc</td><td>100</td><td>0.902</td><td>0.332</td><td>0.895</td><td><span class="dp">+0.886</span></td><td>100%</td></tr><tr><td>testref_vc</td><td>100</td><td>0.756</td><td>0.314</td><td>0.878</td><td><span class="dp">+0.736</span></td><td>100%</td></tr></tbody></table></div>
+<h3>By language</h3><div class="tw"><table><thead><tr><th>lang</th><th>n</th><th>best reward</th><th>best invWER</th><th>uplift</th></tr></thead><tbody><tr><td>EN</td><td>150</td><td>0.745</td><td>0.936</td><td><span class="dp">+0.714</span></td></tr><tr><td>DE</td><td>150</td><td>0.908</td><td>0.823</td><td><span class="dp">+0.902</span></td></tr></tbody></table></div>
+<p class="note">German scores higher on reward (stronger blend/genuineness) while English scores higher on invWER — the ASR transcribes English more cleanly, but the VoiceCLAP heads rate the German takes as more genuine.</p>
+</section>
+<section class="panel"><div class="ph"><span class="pn">02</span><h2>Sidon-before-scoring ablation</h2></div>
+<p class="lead">Sidon speech restoration (w2v-BERT 2.0 + DAC, 16→48 kHz) was applied to a deterministic <b>50% of groups</b> before scoring — <b>12,923</b> clips restored and scored paired against their raw versions. The verdict: <b>restoration does not help best-of-N selection.</b></p>
+<div class="tw"><table><thead><tr><th>metric</th><th>raw</th><th>Sidon</th><th>Δ (Sidon − raw)</th><th>% clips improved</th></tr></thead><tbody><tr><td>invWER</td><td>0.734</td><td>0.733</td><td><span class="d0">-0.000</span></td><td>5.7%</td></tr><tr><td>blend</td><td>2.219</td><td>2.177</td><td><span class="dn">-0.042</span></td><td>42.1%</td></tr><tr><td>genuineness</td><td>1.279</td><td>1.313</td><td><span class="dp">+0.035</span></td><td>55.5%</td></tr><tr><td>reward</td><td>0.343</td><td>0.343</td><td><span class="dn">-0.001</span></td><td>44.4%</td></tr></tbody></table></div>
+<p class="note">On the <b>best-of-N</b> pick per cell, Sidon reward is <span class="dn">-0.019</span> vs raw (Sidon wins in only <b>44.7%</b> of 132 cells). Restoration slightly lowers VoiceCLAP blend similarity while marginally raising genuineness — the two nearly cancel, leaving reward flat. For this pipeline, Sidon is a cost with no scoring benefit; its value would be in output audio quality, not selection.</p>
+</section>
+<section class="panel"><div class="ph"><span class="pn">03</span><h2>Per-sample throughput</h2></div>
+<p class="lead">Measured on the real run, per stage. ASR dominates end-to-end cost — the VoiceCLAP scoring heads are effectively free next to Parakeet decoding.</p>
+<div class="bars"><div class="barrow"><div class="barlab">MOSS-8B generation</div><div class="bartrack"><div class="bar" style="width:19.5%"></div><span class="barval">1.969s</span></div><div class="barnote">per clip · batched ×100</div></div><div class="barrow"><div class="barlab">WER / ASR — Parakeet-TDT</div><div class="bartrack"><div class="bar" style="width:12.9%"></div><span class="barval">1.304s</span></div><div class="barnote">per clip · dominant cost</div></div><div class="barrow"><div class="barlab">Sidon restoration</div><div class="bartrack"><div class="bar" style="width:6.0%"></div><span class="barval">0.609s</span></div><div class="barnote">per clip</div></div><div class="barrow"><div class="barlab">Scoring — blend + genuineness</div><div class="bartrack"><div class="bar" style="width:0.3%"></div><span class="barval">0.033s</span></div><div class="barnote">per clip · VoiceCLAP</div></div><div class="barrow"><div class="barlab">Chatterbox voice conversion</div><div class="bartrack"><div class="bar" style="width:100.0%"></div><span class="barval">10.075s</span></div><div class="barnote">per group (2 refs built)</div></div></div>
+</section>
+<section class="panel"><div class="ph"><span class="pn">04</span><h2>n=1000 scaling — does best-of-N plateau?</h2></div>
+<p class="lead">Expected best-of-k reward as a function of how many of the 1000 takes you sample (bootstrap over random subsets). Reward keeps climbing all the way to 1000 — with clear diminishing returns, but <b>no plateau</b> before the ceiling.</p>
+<div class="chart"><svg viewBox="0 0 680 320" role="img" aria-label="best-of-k reward versus k">
+      <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5fd0c4" stop-opacity="0.34"/>
+        <stop offset="1" stop-color="#5fd0c4" stop-opacity="0.02"/></linearGradient></defs>
+      <line x1="54" y1="266.0" x2="656" y2="266.0" class="grid"/><text x="44" y="269.0" class="axl" text-anchor="end">0.71</text><line x1="54" y1="206.5" x2="656" y2="206.5" class="grid"/><text x="44" y="209.5" class="axl" text-anchor="end">0.77</text><line x1="54" y1="147.0" x2="656" y2="147.0" class="grid"/><text x="44" y="150.0" class="axl" text-anchor="end">0.83</text><line x1="54" y1="87.5" x2="656" y2="87.5" class="grid"/><text x="44" y="90.5" class="axl" text-anchor="end">0.89</text><line x1="54" y1="28.0" x2="656" y2="28.0" class="grid"/><text x="44" y="31.0" class="axl" text-anchor="end">0.95</text>
+      <polygon points="54,266 54.0,238.5 85.7,190.7 149.1,146.0 212.4,127.1 275.8,104.5 339.2,91.8 402.5,91.7 465.9,76.7 529.3,70.2 592.6,65.1 656.0,55.5 656.0,266" fill="url(#ag)"/>
+      <polyline points="54.0,238.5 85.7,190.7 149.1,146.0 212.4,127.1 275.8,104.5 339.2,91.8 402.5,91.7 465.9,76.7 529.3,70.2 592.6,65.1 656.0,55.5" fill="none" stroke="#5fd0c4" stroke-width="2.4"/>
+      <circle cx="54.0" cy="238.5" r="3" class="pt"/><circle cx="85.7" cy="190.7" r="3" class="pt"/><circle cx="149.1" cy="146.0" r="3" class="pt"/><circle cx="212.4" cy="127.1" r="3" class="pt"/><circle cx="275.8" cy="104.5" r="3" class="pt"/><circle cx="339.2" cy="91.8" r="3" class="pt"/><circle cx="402.5" cy="91.7" r="3" class="pt"/><circle cx="465.9" cy="76.7" r="3" class="pt"/><circle cx="529.3" cy="70.2" r="3" class="pt"/><circle cx="592.6" cy="65.1" r="3" class="pt"/><circle cx="656.0" cy="55.5" r="3" class="pt"/><circle cx="85.7" cy="190.7" r="4" class="ptstart"/><text x="85.7" y="212.7" class="startlab" text-anchor="middle">100 = 0.788</text><circle cx="656.0" cy="55.5" r="6" class="ptend"/><circle cx="656.0" cy="55.5" r="11" class="ptglow"/><text x="656.0" y="39.5" class="endlab" text-anchor="end">best-of-1000 = 0.926</text><text x="54.0" y="286.0" class="axl" text-anchor="middle">50</text><line x1="54.0" y1="266.0" x2="54.0" y2="271.0" class="tick"/><text x="149.1" y="286.0" class="axl" text-anchor="middle">200</text><line x1="149.1" y1="266.0" x2="149.1" y2="271.0" class="tick"/><text x="275.8" y="286.0" class="axl" text-anchor="middle">400</text><line x1="275.8" y1="266.0" x2="275.8" y2="271.0" class="tick"/><text x="402.5" y="286.0" class="axl" text-anchor="middle">600</text><line x1="402.5" y1="266.0" x2="402.5" y2="271.0" class="tick"/><text x="529.3" y="286.0" class="axl" text-anchor="middle">800</text><line x1="529.3" y1="266.0" x2="529.3" y2="271.0" class="tick"/><text x="656.0" y="286.0" class="axl" text-anchor="middle">1000</text><line x1="656.0" y1="266.0" x2="656.0" y2="271.0" class="tick"/>
+      <text x="367" y="310" class="axttl" text-anchor="middle">number of takes sampled (k)</text>
+    </svg></div>
+<p class="note">Going 100 → 1000 takes lifts best-of-k reward by <b>+0.138</b> (<b>+17.5%</b>). The marginal gain shrinks from +0.049 (50→100) to +0.010 (900→1000), but 95% of the 100→1000 gain is not reached until k = 1000 — so within this budget, more samples still pay off. The knee is around k ≈ 300–500, where you capture most of the gain at a quarter of the compute.</p>
+</section>
+<section class="panel"><div class="ph"><span class="pn">05</span><h2>Named-reference fair-text groups</h2></div>
+<p class="lead">Three DramaBox emotional prompts — <span class="mono">fear/terror</span>, <span class="mono">bliss</span>, <span class="mono">vulnerable love</span> — 3 sentences each, EN + DE, cloned onto each named voice. Best-of-100 per (voice × emotion × language).</p>
+<h3>By reference voice</h3><div class="tw"><table><thead><tr><th>voice</th><th>n</th><th>best reward</th><th>best invWER</th><th>uplift</th></tr></thead><tbody><tr><td>samantha</td><td>6</td><td>1.050</td><td>0.947</td><td><span class="dp">+1.050</span></td></tr><tr><td>dragon</td><td>6</td><td>0.917</td><td>0.928</td><td><span class="dp">+0.905</span></td></tr><tr><td>chris</td><td>6</td><td>0.793</td><td>0.814</td><td><span class="dp">+0.780</span></td></tr><tr><td>orc</td><td>6</td><td>0.792</td><td>0.930</td><td><span class="dp">+0.792</span></td></tr><tr><td>goblin</td><td>6</td><td>0.714</td><td>0.900</td><td><span class="dp">+0.712</span></td></tr></tbody></table></div>
+<h3>By emotion prompt</h3><div class="tw"><table><thead><tr><th>emotion</th><th>n</th><th>best reward</th><th>best invWER</th></tr></thead><tbody><tr><td>vulnerable love</td><td>10</td><td>0.893</td><td>0.906</td></tr><tr><td>fear / terror</td><td>10</td><td>0.851</td><td>0.936</td></tr><tr><td>bliss</td><td>10</td><td>0.815</td><td>0.870</td></tr></tbody></table></div>
+<p class="note">Samantha clones best (reward 1.05, invWER 0.95); goblin is hardest (0.71). Across voices the tender-love prompt scores highest and bliss lowest — the model lands intimate delivery more reliably than sustained elation.</p>
+</section>
+<footer class="foot">
+  <div class="ph"><span class="pn">·</span><h2>Method &amp; provenance</h2></div>
+  <ul>
+    <li><b>Generation</b> — MOSS-TTS-v1.5-8B voice-acting, WITH reference codes, bf16/sdpa, 100 batched takes per cell.
+        The tune's config points at a drifted 48 kHz-stereo codec; the correct codec is the mono 24 kHz
+        <span class="mono">MOSS-Audio-Tokenizer</span> (verified: WER=0 vs crash).</li>
+    <li><b>Reference conditions</b> — <span class="mono">orig</span> clones the raw LGT clip;
+        <span class="mono">emolia_vc</span> / <span class="mono">testref_vc</span> speed-perturb then Chatterbox-VC the source
+        onto a German-Emolia / test-ref speaker.</li>
+    <li><b>Scoring</b> — invWER from Parakeet-TDT-0.6b-v3; blend + genuineness from VoiceCLAP-commercial MLP heads;
+        min-max normalised across all 70,893 scored clips.</li>
+    <li><b>Scale</b> — 300 base cells + 30 named cells + 26 scaling cells;
+        57,614 clips generated, 12,923 Sidon-restored, 70,893 rows scored on 8×A100.</li>
+  </ul>
+</footer>
+</div>
