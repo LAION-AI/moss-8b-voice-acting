@@ -75,6 +75,39 @@ fine-tuned model. Play the clips directly in your browser.</p>
   <a href="prompting_ablation/grid_top3.html">🎧&nbsp;top-3 of 16</a> ·
   <a href="prompting_ablation/grid_bestof8.html">best-of-8</a>.</div></a>
 
+
+<h2>LGT scaling &amp; Sidon study (n up to 1000)</h2>
+<a class="card" href="lgt_study_report.html">
+  <div class="t">Study report — reward/uplift, Sidon ablation, throughput, n=1000 plateau</div>
+  <div class="d">50 LGT voices × 3 reference conditions × EN/DE, up to 1000 takes. Best-of-N beats the cloned reference in 100% of groups; Sidon-before-scoring is neutral; reward still rising at k=1000.</div></a>
+<a class="card" href="lgt_bestof_samples.html">
+  <div class="t">🎧 Top-3 samples per group (78 groups)</div>
+  <div class="d">The 3 best takes of every group with all scores, prompts, and a plain-language explainer.</div></a>
+
+<h2>DramaBox prompting ablation (dialogue in instruction? reference audio? rewards)</h2>
+<a class="card" href="dramabox_prompting_ablation.html">
+  <div class="t">Analysis &amp; plots — style × reference × best-of-k + prompt adherence</div>
+  <div class="d">with_dialogue vs directions-only × no-ref vs random emotion ref, 25 prompts × 60 takes. Includes VoiceCLAP prompt-adherence (near-orthogonal to reward, r≈0).</div></a>
+<a class="card" href="dramabox_prompting_ablation_top3.html">
+  <div class="t">🎧 Top-3 grids · <a href="dramabox_prompting_ablation_bestofn.html">best-of-16/8/6/4</a> · <a href="dramabox_prompting_ablation_promptreward.html">prompt-reward ranking</a></div>
+  <div class="d">Every variant's best takes with full scores on each player.</div></a>
+<a class="card" href="dramabox_prompting_ablation_best60.html">
+  <div class="t">🎧 Three rewards side-by-side — <a href="dramabox_prompting_ablation_best16.html">best-of-16</a> / best-of-60 · <a href="dramabox_prompting_ablation_16vs128.html">16 vs 128 gain</a></div>
+  <div class="d">Same take pool ranked by all / original / adherence rewards; expanding 16→128 lifts the best take ~14–16%.</div></a>
+
+<h2>Emotion prompting (Empathic-Insight-Plus scored)</h2>
+<a class="card" href="emotion_prompting_study.html">
+  <div class="t">How to prompt extreme emotion — 6 emotions × 20 instruction styles</div>
+  <div class="d">Escalation-arc and loudness instructions win; the emotional text itself carries most of the emotion; empty instruction is best for speaker similarity; genuineness can't be asked for.</div></a>
+<a class="card" href="emotion_prompting_grids.html">
+  <div class="t">🎧 All insights + top-3 takes per group (456 players)</div>
+  <div class="d">Every emotion × style group's best takes with target/arousal/valence/volume scores and instruction texts.</div></a>
+
+<h2>voice-acting-prompts best-of-64 (procedural, 40 emotions)</h2>
+<a class="card" href="vap_bestof64_pilot.html">
+  <div class="t">🎧 Pilot: 5 emotions × 2 groups × 64 takes, weighted-reward top-3</div>
+  <div class="d">The 40-emotion dataset maps 1:1 to EI-Plus heads — fully procedural pipeline; reward = invWER × (1.5·target + genu + blend). Full run: 256k clips ≈ 8–9 h on 8×A100.</div></a>
+
 <h2>Checkpoint eval</h2>
 <a class="card" href="checkpoint_eval.html">
   <div class="t">Held-out emotional prompts</div>

@@ -95,7 +95,8 @@ Hosted on GitHub Pages (play the audio in-browser):
   [best-of-60, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best60.html) ·
   [16 vs 128 takes — qualitative gain](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_16vs128.html) ·
   [emotion-prompting study](https://projects.laion.ai/moss-8b-voice-acting/emotion_prompting_study.html) ·
-  [emotion grids: all insights + top-3 per group](https://projects.laion.ai/moss-8b-voice-acting/emotion_prompting_grids.html)
+  [emotion grids: all insights + top-3 per group](https://projects.laion.ai/moss-8b-voice-acting/emotion_prompting_grids.html) ·
+  [voice-acting-prompts best-of-64 pilot](https://projects.laion.ai/moss-8b-voice-acting/vap_bestof64_pilot.html)
 - **Scaling & Sidon study (LGT):** [best-of-N audio samples](https://projects.laion.ai/moss-8b-voice-acting/lgt_bestof_samples.html) ·
   [report](https://projects.laion.ai/moss-8b-voice-acting/lgt_study_report.html)
 
