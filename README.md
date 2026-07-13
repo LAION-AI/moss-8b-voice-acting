@@ -92,7 +92,8 @@ Hosted on GitHub Pages (play the audio in-browser):
   [best-of-16/8/6/4 grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_bestofn.html) ·
   [prompt-adherence reward grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_promptreward.html) ·
   [best-of-16, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best16.html) ·
-  [best-of-60, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best60.html)
+  [best-of-60, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best60.html) ·
+  [16 vs 128 takes — qualitative gain](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_16vs128.html)
 - **Scaling & Sidon study (LGT):** [best-of-N audio samples](https://projects.laion.ai/moss-8b-voice-acting/lgt_bestof_samples.html) ·
   [report](https://projects.laion.ai/moss-8b-voice-acting/lgt_study_report.html)
 
@@ -146,6 +147,9 @@ What you can hear/see on the pages:
   [Best-of-60](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best60.html),
   three rewards side-by-side: the same take pool ranked by all three rewards in three columns —
   hear how the "winner" changes with the optimisation target.
+- [16 vs 128 takes](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_16vs128.html):
+  12 diverse prompts expanded from 16 to 128 takes (no-ref) — best-of-16 vs top-3-of-128 per reward,
+  with gain statistics (mean best-take reward +14-17%, ~85% of groups find a better take in 128).
 
 **prompt-sim** on these pages = VoiceCLAP-commercial cosine similarity between the direction
 text (dialogue removed) and the generated audio — "did the voice actually perform the direction".
