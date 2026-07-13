@@ -90,7 +90,8 @@ Hosted on GitHub Pages (play the audio in-browser):
 - **Prompting ablation (DramaBox):** [dialogue-in-instruction vs directions-only + emotion-reference](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation.html) ·
   [top-3 grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_top3.html) ·
   [best-of-16/8/6/4 grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_bestofn.html) ·
-  [prompt-adherence reward grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_promptreward.html)
+  [prompt-adherence reward grids](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_promptreward.html) ·
+  [best-of-16, three rewards side-by-side](https://projects.laion.ai/moss-8b-voice-acting/dramabox_prompting_ablation_best16.html)
 - **Scaling & Sidon study (LGT):** [best-of-N audio samples](https://projects.laion.ai/moss-8b-voice-acting/lgt_bestof_samples.html) ·
   [report](https://projects.laion.ai/moss-8b-voice-acting/lgt_study_report.html)
 
