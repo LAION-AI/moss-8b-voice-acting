@@ -1,0 +1,618 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Prompting ablation — best-of-8 preview</title><style>*{box-sizing:border-box}body{margin:0;background:#0f1117;color:#e8eaf0;font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 16px 90px}h1{font-size:26px;margin:.1em 0}
+a{color:#6ea8fe}.lead{background:#1a1d27;border:1px solid #2a3040;border-radius:12px;padding:16px 18px;margin:14px 0 22px;color:#d7dbe4}
+h2{border-bottom:1px solid #2a3040;padding-bottom:7px;margin-top:34px;font-size:19px;color:#7ee0a8}
+h3{font-size:15px;color:#6ea8fe;margin:22px 0 8px;text-transform:uppercase;letter-spacing:.05em}
+.card{background:#1a1d27;border:1px solid #262b38;border-radius:12px;padding:13px 15px;margin:14px 0}
+.chd{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.gid{font-family:monospace;font-size:12px;color:#9aa0ac}
+.tag{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:600}
+.tag.cc{background:#26314a;color:#6ea8fe}.tag.sd{background:#3a2b1c;color:#e0a86e}.tag.v{background:#2b2340;color:#b79cff}
+.prompt{background:#141824;border:1px solid #2a3040;border-radius:9px;padding:9px 12px;color:#e7edf7;font-size:14px}
+.pl{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:#8a93a0;margin-bottom:3px}
+.instr{margin:7px 0 4px;color:#9aa0ac;font-size:12.5px}.instr summary{cursor:pointer;color:#6ea8fe}
+.instr pre{white-space:pre-wrap;font:12px/1.5 inherit;color:#c3c9d4;background:#141824;border:1px solid #232838;border-radius:8px;padding:8px 10px;margin:6px 0 0}
+.strip{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.tk{background:#20242f;border:1px solid #2f5540;border-radius:9px;padding:8px 10px;width:340px;flex:1;min-width:270px}
+.rk{font-size:11px;color:#7ee0a8;font-weight:700}.sc{font-size:13px;margin-top:4px}.sc b{color:#7ee0a8}
+.cmp{font-size:11px;color:#9aa0ac;margin-top:2px}audio{width:100%;height:34px;margin-top:4px}.na{color:#c06;font-size:12px}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:13.5px}
+th,td{border:1px solid #2a3040;padding:6px 10px;text-align:right}th{background:#161a24;color:#9aa0ac;font-weight:600}
+td:first-child,th:first-child{text-align:left}.win{color:#7ee0a8;font-weight:700}.lose{color:#e0a86e}
+.big{background:#12161f;border:1px solid #2f4a3a;border-left:4px solid #7ee0a8;border-radius:10px;padding:14px 18px;margin:14px 0}
+.mut{color:#9aa0ac;font-size:13px}code{background:#141824;border:1px solid #2a3040;border-radius:5px;padding:1px 6px;font-size:12.5px}
+img{max-width:100%;border-radius:10px;border:1px solid #2a3040;background:#fff}
+.nav{margin:6px 0 0}.nav a{margin-right:14px}</style></head><body><div class=wrap>
+<h1>Prompting ablation — best-of-8 preview</h1>
+<div class=nav><a href="index.html">← Overview &amp; conclusions</a><a href="grid_top3.html">Top-3 of 16</a><a href="grid_bestof8.html">Best-of-8 preview</a></div>
+<div class=lead>For each of the 50 groups we draw a random 8 of the 16 takes and show the top-3 of that subsample (a best-of-8 preview). Each group pairs a spoken text with a <b>structured two-part performance-prompt</b>
+(voice description + situation + optional <code>CUT&nbsp;TO</code> emotion change). The two prompting
+<b>variants</b> differ only in whether the quoted lines are left inside the instruction (A) or removed (B).
+Ranked by <code>combined = invWER × (norm blend + norm genuineness)</code>. Groups are grouped by pathway.</div>
+<h2>Character-consistent <span class=mut style="font-weight:400;font-size:13px">· 20 groups</span></h2><div class=card><div class=chd><span class=gid>prompt 00</span><span class="tag cc">Character-consistent</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>I have all the time in the world, truly. Please, take your time. I&#x27;m in no hurry at all.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A pre-pubescent male with a hyper-masculine, booming chest resonance, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is impatient and irritable, barely concealing a simmering annoyance.
+
+(Sighs.) &quot;I have all the time in the world, truly. Please, take your time. I&#x27;m in no hurry at all.&quot;
+
+CUT TO:
+
+The same voice now</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g00_a_v11.mp3"></audio><div class=sc>reward <b>1.198</b></div><div class=cmp>genu 1.66 · blend 6.10 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g00_a_v3.mp3"></audio><div class=sc>reward <b>1.047</b></div><div class=cmp>genu 1.63 · blend 4.79 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g00_a_v6.mp3"></audio><div class=sc>reward <b>1.024</b></div><div class=cmp>genu 1.81 · blend 4.23 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 00</span><span class="tag cc">Character-consistent</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>I have all the time in the world, truly. Please, take your time. I&#x27;m in no hurry at all.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A pre-pubescent male with a hyper-masculine, booming chest resonance, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is impatient and irritable, barely concealing a simmering annoyance.
+
+(Sighs.) 
+
+CUT TO:
+
+The same voice now</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g00_b_v0.mp3"></audio><div class=sc>reward <b>1.043</b></div><div class=cmp>genu 1.09 · blend 5.79 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g00_b_v11.mp3"></audio><div class=sc>reward <b>0.978</b></div><div class=cmp>genu 1.23 · blend 4.94 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g00_b_v2.mp3"></audio><div class=sc>reward <b>0.773</b></div><div class=cmp>genu 0.99 · blend 3.53 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 01</span><span class="tag cc">Character-consistent</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>I left it right there on the bench, for two days, and nobody touched it. Nobody saw it. That&#x27;s exactly how I wanted it to sit. But now I can&#x27;t remember where I hid the key. I can&#x27;t... the pattern&#x27;s gone. It&#x27;s all just shaking.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A vastly elderly male with a brittle, metallic yet velvety voice, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is coiled with relief, a thin thread of disgust, and an undercurrent of quiet malice.
+
+(muttering, savoring) &quot;I left it right there on the bench, for two days, and nobody touched it. Nobody saw it. That&#x27;s exactly how I wanted it to sit.&quot;
+
+CUT TO:
+
+The same voice now trembling with sudden, raw panic, the malice replaced by a desperate, childlike confusion.
+
+(voice cracking) &quot;But now I can&#x27;t remember where I hid the key. I can&#x27;t... the pattern&#x27;s gone. It&#x27;s all just shaking.&quot;</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g01_a_v15.mp3"></audio><div class=sc>reward <b>0.825</b></div><div class=cmp>genu 1.48 · blend 3.08 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g01_a_v3.mp3"></audio><div class=sc>reward <b>0.646</b></div><div class=cmp>genu 1.31 · blend 1.89 · 1−WER 0.98</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g01_a_v6.mp3"></audio><div class=sc>reward <b>0.416</b></div><div class=cmp>genu 0.93 · blend 0.43 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 01</span><span class="tag cc">Character-consistent</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>I left it right there on the bench, for two days, and nobody touched it. Nobody saw it. That&#x27;s exactly how I wanted it to sit. But now I can&#x27;t remember where I hid the key. I can&#x27;t... the pattern&#x27;s gone. It&#x27;s all just shaking.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A vastly elderly male with a brittle, metallic yet velvety voice, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is coiled with relief, a thin thread of disgust, and an undercurrent of quiet malice.
+
+(muttering, savoring) 
+
+CUT TO:
+
+The same voice now trembling with sudden, raw panic, the malice replaced by a desperate, childlike confusion.
+
+(voice cracking)</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g01_b_v2.mp3"></audio><div class=sc>reward <b>0.968</b></div><div class=cmp>genu 1.93 · blend 3.52 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g01_b_v14.mp3"></audio><div class=sc>reward <b>0.714</b></div><div class=cmp>genu 1.06 · blend 2.87 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g01_b_v15.mp3"></audio><div class=sc>reward <b>0.634</b></div><div class=cmp>genu 1.27 · blend 1.74 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 02</span><span class="tag cc">Character-consistent</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>I thought... I thought it would feel different. Like losing something. But it doesn&#x27;t. It&#x27;s just... still. You let them take it. You just stood there. That was mine. That was everything I had left.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A adolescent female with a hyper-harmonic, mask-resonant voice speaking at a glacially slow tempo, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is caught in a quiet, inward-turning disappointment that is unexpectedly tinted with a fragile relief, as if a held breath is just beginning to uncurl.
+
+(A long, weighted pause, her eyes fixed somewhere in the middle distance) &quot;I thought... I thought it would feel different. Like losing something.&quot; (She slowly blinks, letting the silence grow) &quot;But it doesn&#x27;t. It&#x27;s just... still.&quot;
+
+CUT TO:
+
+The same voice now erupts into a raw, trembling fury that shatters the stillness, every syllable pulled through clenched teeth and a vibrating larynx as control completely disintegrates.
+
+(Her breath catches audibly, then she forces the words out like shards) &quot;You let them take it. You just stood there.&quot; (A sharp, near-silent inhale, her pitch cracking) &quot;That was mine. That was everything I had left.&quot;
+
+The performance across both moments should feel like two extremes of the same person — the first a slowed, hollow resignation, the second a sudden, volcanic explosion of rage that fully consumes the glacial calm.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g02_a_v10.mp3"></audio><div class=sc>reward <b>0.989</b></div><div class=cmp>genu 0.85 · blend 5.75 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g02_a_v4.mp3"></audio><div class=sc>reward <b>0.972</b></div><div class=cmp>genu 1.32 · blend 4.70 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g02_a_v2.mp3"></audio><div class=sc>reward <b>0.965</b></div><div class=cmp>genu 1.42 · blend 7.26 · 1−WER 0.76</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 02</span><span class="tag cc">Character-consistent</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>I thought... I thought it would feel different. Like losing something. But it doesn&#x27;t. It&#x27;s just... still. You let them take it. You just stood there. That was mine. That was everything I had left.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A adolescent female with a hyper-harmonic, mask-resonant voice speaking at a glacially slow tempo, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is caught in a quiet, inward-turning disappointment that is unexpectedly tinted with a fragile relief, as if a held breath is just beginning to uncurl.
+
+(A long, weighted pause, her eyes fixed somewhere in the middle distance) (She slowly blinks, letting the silence grow) 
+
+CUT TO:
+
+The same voice now erupts into a raw, trembling fury that shatters the stillness, every syllable pulled through clenched teeth and a vibrating larynx as control completely disintegrates.
+
+(Her breath catches audibly, then she forces the words out like shards) (A sharp, near-silent inhale, her pitch cracking) 
+
+The performance across both moments should feel like two extremes of the same person — the first a slowed, hollow resignation, the second a sudden, volcanic explosion of rage that fully consumes the glacial calm.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g02_b_v6.mp3"></audio><div class=sc>reward <b>1.353</b></div><div class=cmp>genu 2.22 · blend 6.43 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g02_b_v1.mp3"></audio><div class=sc>reward <b>1.308</b></div><div class=cmp>genu 1.90 · blend 6.64 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g02_b_v5.mp3"></audio><div class=sc>reward <b>1.112</b></div><div class=cmp>genu 1.42 · blend 7.73 · 1−WER 0.84</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 03</span><span class="tag cc">Character-consistent</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>You know, I really thought you&#x27;d be here by now, but I guess you got held up? That&#x27;s okay, I&#x27;m just excited—I&#x27;ve been planning this all week. Oh. It&#x27;s fine. I didn&#x27;t expect anything anyway. Just... thought maybe this time would be different. I&#x27;m tired of hoping. It just makes it harder when it falls apart.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A woman in her late twenties with a blisteringly fast, slightly darkened alto timbre and prominent nasal resonance, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is impatient and irritable yet brimming with affection and hope, accelerating through the words with barely contained excitement.
+
+(Accelerating.) &quot;You know, I really thought you&#x27;d be here by now, but I guess you got held up? That&#x27;s okay, I&#x27;m just excited—I&#x27;ve been planning this all week.&quot;
+
+CUT TO:
+
+The same voice now utterly deflated, the speed collapsing into a slow, hollow whisper, the energy draining completely.
+
+(Voice hollow.) &quot;Oh. It&#x27;s fine. I didn&#x27;t expect anything anyway. Just... thought maybe this time would be different. I&#x27;m tired of hoping. It just makes it harder when it falls apart.&quot;
+
+The performance across both moments should feel like a single person&#x27;s emotional whiplash from eager anticipation to crushing resignation.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g03_a_v0.mp3"></audio><div class=sc>reward <b>0.959</b></div><div class=cmp>genu 1.56 · blend 5.72 · 1−WER 0.84</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g03_a_v7.mp3"></audio><div class=sc>reward <b>0.957</b></div><div class=cmp>genu 2.02 · blend 3.24 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g03_a_v9.mp3"></audio><div class=sc>reward <b>0.955</b></div><div class=cmp>genu 1.05 · blend 5.06 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 03</span><span class="tag cc">Character-consistent</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>You know, I really thought you&#x27;d be here by now, but I guess you got held up? That&#x27;s okay, I&#x27;m just excited—I&#x27;ve been planning this all week. Oh. It&#x27;s fine. I didn&#x27;t expect anything anyway. Just... thought maybe this time would be different. I&#x27;m tired of hoping. It just makes it harder when it falls apart.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A woman in her late twenties with a blisteringly fast, slightly darkened alto timbre and prominent nasal resonance, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is impatient and irritable yet brimming with affection and hope, accelerating through the words with barely contained excitement.
+
+(Accelerating.) 
+
+CUT TO:
+
+The same voice now utterly deflated, the speed collapsing into a slow, hollow whisper, the energy draining completely.
+
+(Voice hollow.) 
+
+The performance across both moments should feel like a single person&#x27;s emotional whiplash from eager anticipation to crushing resignation.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g03_b_v8.mp3"></audio><div class=sc>reward <b>0.860</b></div><div class=cmp>genu 2.09 · blend 2.23 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g03_b_v4.mp3"></audio><div class=sc>reward <b>0.776</b></div><div class=cmp>genu 2.33 · blend 1.01 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g03_b_v12.mp3"></audio><div class=sc>reward <b>0.731</b></div><div class=cmp>genu 1.10 · blend 2.95 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 04</span><span class="tag cc">Character-consistent</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>It&#x27;s just that the way the glass shattered... well, it was sort of beautiful, don&#x27;t you think? We never could afford good crystal anyway. They always left the porch light on. Every night. Every single one.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 27-year-old male speaker with a bright, lightweight tenor voice, slightly metallic yet intimately breathy, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is caught between a hollow, mechanical numbness and a fragile, rising amusement, as if watching a disaster from behind soundproof glass.
+
+(Gently exhales, almost a soft laugh) &quot;It&#x27;s just that the way the glass shattered... well, it was sort of beautiful, don&#x27;t you think?&quot; (Lets the silence hang, one breath longer than comfortable) &quot;We never could afford good crystal anyway.&quot;
+
+CUT TO:
+
+The same voice now crumpled into a raw, clinging grief, the metallic edge cracking into damp, human fragility, as if the glass wall finally gave way.
+
+(Whispers, voice splintering at the edges) &quot;They always left the porch light on.&quot; (A wet, shaky inhale, then a near-silent plea) &quot;Every night. Every single one.&quot;
+
+The performance across both moments should feel like a single person disintegrating from a state of placid, armored detachment into a shattering, unguarded sorrow, with the ASMR intimacy capturing every microscopic fracture in the voice.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g04_a_v6.mp3"></audio><div class=sc>reward <b>0.929</b></div><div class=cmp>genu 1.77 · blend 3.47 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g04_a_v3.mp3"></audio><div class=sc>reward <b>0.909</b></div><div class=cmp>genu 1.47 · blend 4.07 · 1−WER 0.97</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g04_a_v9.mp3"></audio><div class=sc>reward <b>0.772</b></div><div class=cmp>genu 1.21 · blend 3.29 · 1−WER 0.97</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 04</span><span class="tag cc">Character-consistent</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>It&#x27;s just that the way the glass shattered... well, it was sort of beautiful, don&#x27;t you think? We never could afford good crystal anyway. They always left the porch light on. Every night. Every single one.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 27-year-old male speaker with a bright, lightweight tenor voice, slightly metallic yet intimately breathy, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is caught between a hollow, mechanical numbness and a fragile, rising amusement, as if watching a disaster from behind soundproof glass.
+
+(Gently exhales, almost a soft laugh) (Lets the silence hang, one breath longer than comfortable) 
+
+CUT TO:
+
+The same voice now crumpled into a raw, clinging grief, the metallic edge cracking into damp, human fragility, as if the glass wall finally gave way.
+
+(Whispers, voice splintering at the edges) (A wet, shaky inhale, then a near-silent plea) 
+
+The performance across both moments should feel like a single person disintegrating from a state of placid, armored detachment into a shattering, unguarded sorrow, with the ASMR intimacy capturing every microscopic fracture in the voice.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g04_b_v15.mp3"></audio><div class=sc>reward <b>0.965</b></div><div class=cmp>genu 1.41 · blend 4.47 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g04_b_v5.mp3"></audio><div class=sc>reward <b>0.947</b></div><div class=cmp>genu 1.41 · blend 4.79 · 1−WER 0.95</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g04_b_v9.mp3"></audio><div class=sc>reward <b>0.642</b></div><div class=cmp>genu 1.55 · blend 7.09 · 1−WER 0.50</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 05</span><span class="tag cc">Character-consistent</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Huh. That&#x27;s... that&#x27;s really something. Why would they put a nightlight in a dead drop? It&#x27;s a timer. Not a light. I&#x27;ve got forty seconds.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 35-year-old man with a low, gravelly timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is savoring a bizarre discovery with quiet, amused ecstasy, barely moving.
+
+(barely audible exhale) &quot;Huh. That&#x27;s... that&#x27;s really something.&quot; (slow, gentle chuckle) &quot;Why would they put a nightlight in a dead drop?&quot;
+
+CUT TO:
+
+The same voice now has gone ice-cold, a sudden predatory stillness replacing the pleasure.
+
+(flat, clipped) &quot;It&#x27;s a timer. Not a light.&quot; (very quiet, almost a whisper) &quot;I&#x27;ve got forty seconds.&quot;
+
+The performance across both moments should feel like a single person whose focus snaps from serene curiosity to lethal urgency without any wasted motion.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g05_a_v6.mp3"></audio><div class=sc>reward <b>1.074</b></div><div class=cmp>genu 0.94 · blend 7.08 · 1−WER 0.93</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g05_a_v13.mp3"></audio><div class=sc>reward <b>0.694</b></div><div class=cmp>genu 1.00 · blend 3.02 · 1−WER 0.97</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g05_a_v4.mp3"></audio><div class=sc>reward <b>0.540</b></div><div class=cmp>genu 1.41 · blend 6.63 · 1−WER 0.45</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 05</span><span class="tag cc">Character-consistent</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Huh. That&#x27;s... that&#x27;s really something. Why would they put a nightlight in a dead drop? It&#x27;s a timer. Not a light. I&#x27;ve got forty seconds.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 35-year-old man with a low, gravelly timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is savoring a bizarre discovery with quiet, amused ecstasy, barely moving.
+
+(barely audible exhale) (slow, gentle chuckle) 
+
+CUT TO:
+
+The same voice now has gone ice-cold, a sudden predatory stillness replacing the pleasure.
+
+(flat, clipped) (very quiet, almost a whisper) 
+
+The performance across both moments should feel like a single person whose focus snaps from serene curiosity to lethal urgency without any wasted motion.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g05_b_v15.mp3"></audio><div class=sc>reward <b>1.038</b></div><div class=cmp>genu 2.68 · blend 3.40 · 1−WER 0.93</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g05_b_v1.mp3"></audio><div class=sc>reward <b>0.848</b></div><div class=cmp>genu 1.72 · blend 2.82 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g05_b_v10.mp3"></audio><div class=sc>reward <b>0.723</b></div><div class=cmp>genu 1.84 · blend 1.45 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 06</span><span class="tag cc">Character-consistent</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Wait. That number... it&#x27;s the same as the one I saw in the third file. The one with the receipt and the partial print. No, that can&#x27;t be a coincidence.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A late-30s female with a smoky, gravelly timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is scanning a cold-case file, a skeptical hope flickering behind the eyes, confusion muting the usual cynicism.
+
+(breathing in sharply) &quot;Wait. That number... it&#x27;s the same as the one I saw in the third file. The one with the receipt and the partial print.&quot; (exhaling slowly) &quot;No, that can&#x27;t be a coincidence.&quot;
+
+CUT TO:
+
+The same voice now slamming the folder shut, the hope curdling into a flat, resigned cynicism.
+
+(a</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g06_a_v11.mp3"></audio><div class=sc>reward <b>0.895</b></div><div class=cmp>genu 0.98 · blend 4.66 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g06_a_v3.mp3"></audio><div class=sc>reward <b>0.826</b></div><div class=cmp>genu 1.20 · blend 5.70 · 1−WER 0.78</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g06_a_v8.mp3"></audio><div class=sc>reward <b>0.695</b></div><div class=cmp>genu 0.94 · blend 4.68 · 1−WER 0.78</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 06</span><span class="tag cc">Character-consistent</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Wait. That number... it&#x27;s the same as the one I saw in the third file. The one with the receipt and the partial print. No, that can&#x27;t be a coincidence.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A late-30s female with a smoky, gravelly timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is scanning a cold-case file, a skeptical hope flickering behind the eyes, confusion muting the usual cynicism.
+
+(breathing in sharply) (exhaling slowly) 
+
+CUT TO:
+
+The same voice now slamming the folder shut, the hope curdling into a flat, resigned cynicism.
+
+(a</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g06_b_v15.mp3"></audio><div class=sc>reward <b>1.041</b></div><div class=cmp>genu 1.43 · blend 5.13 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g06_b_v10.mp3"></audio><div class=sc>reward <b>0.966</b></div><div class=cmp>genu 1.69 · blend 3.94 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g06_b_v14.mp3"></audio><div class=sc>reward <b>0.908</b></div><div class=cmp>genu 1.50 · blend 3.79 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 07</span><span class="tag cc">Character-consistent</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>I told you— I told you not to come here. You think I wanted this? Think I had a choice? No. No choice at all. They&#x27;re here. I hear them in the hall. Please— just get out. Get out now, before they— Too late.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A middle-aged man with a tight, reedy voice, clipped and stutter-prone, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is bitter and resentful, spitting words out at maximum speed while consciously holding back a full outburst.
+
+(rapidly, jaw clenched) &quot;I told you— I told you not to come here. You think I wanted this? Think I had a choice?&quot; (a bitter, quick exhale) &quot;No. No choice at all.&quot;
+
+CUT TO:
+
+The same voice now suddenly terrified, the bitterness replaced by a desperate, trembling whisper as he realizes the danger is real.
+
+(voice cracks, breathy) &quot;They&#x27;re here. I hear them in the hall. Please— just get out. Get out now, before they—&quot; (a sharp, stifled gasp) &quot;Too late.&quot;
+
+The performance across both moments should feel like a man losing his thin veneer of control, snapping from acidic resentment into genuine animal fear.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g07_a_v10.mp3"></audio><div class=sc>reward <b>1.435</b></div><div class=cmp>genu 1.39 · blend 8.75 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g07_a_v6.mp3"></audio><div class=sc>reward <b>1.084</b></div><div class=cmp>genu 1.81 · blend 4.79 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g07_a_v4.mp3"></audio><div class=sc>reward <b>0.964</b></div><div class=cmp>genu 1.05 · blend 5.35 · 1−WER 0.98</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 07</span><span class="tag cc">Character-consistent</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>I told you— I told you not to come here. You think I wanted this? Think I had a choice? No. No choice at all. They&#x27;re here. I hear them in the hall. Please— just get out. Get out now, before they— Too late.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A middle-aged man with a tight, reedy voice, clipped and stutter-prone, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is bitter and resentful, spitting words out at maximum speed while consciously holding back a full outburst.
+
+(rapidly, jaw clenched) (a bitter, quick exhale) 
+
+CUT TO:
+
+The same voice now suddenly terrified, the bitterness replaced by a desperate, trembling whisper as he realizes the danger is real.
+
+(voice cracks, breathy) (a sharp, stifled gasp) 
+
+The performance across both moments should feel like a man losing his thin veneer of control, snapping from acidic resentment into genuine animal fear.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g07_b_v10.mp3"></audio><div class=sc>reward <b>0.768</b></div><div class=cmp>genu 1.70 · blend 6.35 · 1−WER 0.62</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g07_b_v4.mp3"></audio><div class=sc>reward <b>0.700</b></div><div class=cmp>genu 1.25 · blend 7.44 · 1−WER 0.56</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g07_b_v7.mp3"></audio><div class=sc>reward <b>0.620</b></div><div class=cmp>genu 1.30 · blend 1.56 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 08</span><span class="tag cc">Character-consistent</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>You think I don&#x27;t remember every single note you stole? I still taste the silence after my last standing ovation. Then a child hummed that same melody through the rain this morning. And I knew my voice hadn&#x27;t died—it just hid.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 45-year-old man with a resonant, cathedral-like tenor, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is steeped in bitterness, each word dragged out with deliberate, heavy restraint.
+
+(leans in, breath slow) &quot;You think I don&#x27;t remember every single note you stole?&quot; (pauses, swallows) &quot;I still taste the silence after my last standing ovation.&quot;
+
+CUT TO:
+
+The same voice now breaks open with gentle wonder, as if seeing light for the first time.
+
+(voice softens, catches a breath) &quot;Then a child hummed that same melody through the rain this morning.&quot; (lifts, almost smiling) &quot;And I knew my voice hadn&#x27;t died—it just hid.&quot;
+
+The performance across both moments should feel like a leaden heart cracking open to let a single ray of sunlight in.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g08_a_v3.mp3"></audio><div class=sc>reward <b>0.921</b></div><div class=cmp>genu 1.78 · blend 3.38 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g08_a_v6.mp3"></audio><div class=sc>reward <b>0.519</b></div><div class=cmp>genu 0.43 · blend 4.06 · 1−WER 0.73</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g08_a_v1.mp3"></audio><div class=sc>reward <b>0.504</b></div><div class=cmp>genu 1.21 · blend 0.68 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 08</span><span class="tag cc">Character-consistent</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>You think I don&#x27;t remember every single note you stole? I still taste the silence after my last standing ovation. Then a child hummed that same melody through the rain this morning. And I knew my voice hadn&#x27;t died—it just hid.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 45-year-old man with a resonant, cathedral-like tenor, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is steeped in bitterness, each word dragged out with deliberate, heavy restraint.
+
+(leans in, breath slow) (pauses, swallows) 
+
+CUT TO:
+
+The same voice now breaks open with gentle wonder, as if seeing light for the first time.
+
+(voice softens, catches a breath) (lifts, almost smiling) 
+
+The performance across both moments should feel like a leaden heart cracking open to let a single ray of sunlight in.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g08_b_v12.mp3"></audio><div class=sc>reward <b>0.672</b></div><div class=cmp>genu 0.57 · blend 5.45 · 1−WER 0.75</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g08_b_v8.mp3"></audio><div class=sc>reward <b>0.650</b></div><div class=cmp>genu 1.30 · blend 1.84 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g08_b_v4.mp3"></audio><div class=sc>reward <b>0.581</b></div><div class=cmp>genu 1.89 · blend 0.08 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 09</span><span class="tag cc">Character-consistent</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>I didn&#x27;t think… I&#x27;d make it out of there. God, look at me. Pathetic. You thought you broke me, didn&#x27;t you? Now I get to show you what I do to broken things.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 30s woman with a breathy, velvety timbre that hints at both vulnerability and danger, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is raw with pain but flooded with relief, speaking quickly through shallow breaths, embarrassed by her own tears.
+
+(breathing hard, wiping her cheek) &quot;I didn&#x27;t think… I&#x27;d make it out of there.&quot; (pulling herself together, shaking her head) &quot;God, look at me. Pathetic.&quot;
+
+CUT TO:
+
+The same voice now shifts into a cold, predatory calm, the sultry edge sharpened into a silken threat as she locks onto her target.
+
+(voice drops to a purr, tilting her head) &quot;You thought you broke me, didn&#x27;t you?&quot; (a slow, dangerous smile in her tone) &quot;Now I get to show you what I do to broken things.&quot;
+
+The performance across both moments should feel like watching a wounded animal transform into a poised venomous snake — raw vulnerability morphing into calculated dominance.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g09_a_v15.mp3"></audio><div class=sc>reward <b>0.990</b></div><div class=cmp>genu 0.98 · blend 5.51 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g09_a_v13.mp3"></audio><div class=sc>reward <b>0.551</b></div><div class=cmp>genu 1.44 · blend 7.65 · 1−WER 0.42</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g09_a_v3.mp3"></audio><div class=sc>reward <b>0.515</b></div><div class=cmp>genu 1.91 · blend 5.27 · 1−WER 0.44</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 09</span><span class="tag cc">Character-consistent</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>I didn&#x27;t think… I&#x27;d make it out of there. God, look at me. Pathetic. You thought you broke me, didn&#x27;t you? Now I get to show you what I do to broken things.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 30s woman with a breathy, velvety timbre that hints at both vulnerability and danger, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is raw with pain but flooded with relief, speaking quickly through shallow breaths, embarrassed by her own tears.
+
+(breathing hard, wiping her cheek) (pulling herself together, shaking her head) 
+
+CUT TO:
+
+The same voice now shifts into a cold, predatory calm, the sultry edge sharpened into a silken threat as she locks onto her target.
+
+(voice drops to a purr, tilting her head) (a slow, dangerous smile in her tone) 
+
+The performance across both moments should feel like watching a wounded animal transform into a poised venomous snake — raw vulnerability morphing into calculated dominance.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g09_b_v10.mp3"></audio><div class=sc>reward <b>1.344</b></div><div class=cmp>genu 2.15 · blend 6.50 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g09_b_v2.mp3"></audio><div class=sc>reward <b>1.209</b></div><div class=cmp>genu 1.48 · blend 6.55 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g09_b_v1.mp3"></audio><div class=sc>reward <b>1.154</b></div><div class=cmp>genu 1.89 · blend 5.27 · 1−WER 1.00</div></div></div></div><h2>Scenario-driven <span class=mut style="font-weight:400;font-size:13px">· 30 groups</span></h2><div class=card><div class=chd><span class=gid>prompt 10</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>He tried to teach my cat to high-five. I still hear him saying &#x27;come on, you lazy furball.&#x27; He was so proud when she finally did it once. And now I&#x27;m here, and there&#x27;s nobody left to high-five. But I&#x27;d trade every laugh to hear him say that again.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 38-year-old man with a warm, slightly raspy timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is laughing at a remembered joke, but the laugh is fragile, threatening to crack.
+
+(laughs softly, shakes head) &quot;He tried to teach my cat to high-five. I still hear him saying &#x27;come on, you lazy furball.&#x27;&quot; (voice wavers) &quot;He was so proud when she finally did it once.&quot;
+
+CUT TO:
+
+The same voice now hollow, breath catching, struggling to hold back a sob.
+
+(voice drops, barely above a whisper) &quot;And now I&#x27;m here, and there&#x27;s nobody left to high-five.&quot; (pauses, swallows hard) &quot;But I&#x27;d trade every laugh to hear him say that again.&quot;
+
+The performance across both moments should feel like a single breath that starts as a laugh and ends as a gasp, grief and gratitude tangled together.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g10_a_v12.mp3"></audio><div class=sc>reward <b>1.089</b></div><div class=cmp>genu 1.04 · blend 6.49 · 1−WER 0.98</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g10_a_v2.mp3"></audio><div class=sc>reward <b>0.729</b></div><div class=cmp>genu 1.41 · blend 2.35 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g10_a_v9.mp3"></audio><div class=sc>reward <b>0.671</b></div><div class=cmp>genu 1.58 · blend 1.49 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 10</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>He tried to teach my cat to high-five. I still hear him saying &#x27;come on, you lazy furball.&#x27; He was so proud when she finally did it once. And now I&#x27;m here, and there&#x27;s nobody left to high-five. But I&#x27;d trade every laugh to hear him say that again.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 38-year-old man with a warm, slightly raspy timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is laughing at a remembered joke, but the laugh is fragile, threatening to crack.
+
+(laughs softly, shakes head) (voice wavers) 
+
+CUT TO:
+
+The same voice now hollow, breath catching, struggling to hold back a sob.
+
+(voice drops, barely above a whisper) (pauses, swallows hard) 
+
+The performance across both moments should feel like a single breath that starts as a laugh and ends as a gasp, grief and gratitude tangled together.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g10_b_v13.mp3"></audio><div class=sc>reward <b>0.685</b></div><div class=cmp>genu 1.60 · blend 1.93 · 1−WER 0.94</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g10_b_v10.mp3"></audio><div class=sc>reward <b>0.680</b></div><div class=cmp>genu 1.36 · blend 1.98 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g10_b_v2.mp3"></audio><div class=sc>reward <b>0.440</b></div><div class=cmp>genu 1.12 · blend 0.27 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 11</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>You always called me &#x27;old lady&#x27; when I forgot my keys. And you promised to teach me that TikTok dance. I should have said this sooner... I&#x27;m so sorry. Thank you. I love you. I love you. I love you.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 45-year-old mother with a warm, slightly husky timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is reading the opening of her child&#x27;s letter with a soft, nostalgic smile, laughing quietly at an inside joke.
+
+(a gentle laugh escapes) &quot;You always called me &#x27;old lady&#x27; when I forgot my keys.&quot; (voice warming) &quot;And you promised to teach me that TikTok dance.&quot;
+
+CUT TO:
+
+The same voice now is deeper into the letter, her composure cracking as she reads a final confession, tears spilling over.
+
+(voice trembling) &quot;I should have said this sooner... I&#x27;m so sorry.&quot; (barely a whisper) &quot;Thank you. I love you. I love you.&quot; (a broken sigh) &quot;I love you.&quot;
+
+The performance across both moments should feel like a widowed mother reliving her daughter&#x27;s voice, turning from gentle laughter to raw, unguarded grief.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g11_a_v7.mp3"></audio><div class=sc>reward <b>0.949</b></div><div class=cmp>genu 1.30 · blend 5.47 · 1−WER 0.90</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g11_a_v8.mp3"></audio><div class=sc>reward <b>0.831</b></div><div class=cmp>genu 1.04 · blend 6.71 · 1−WER 0.73</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g11_a_v0.mp3"></audio><div class=sc>reward <b>0.687</b></div><div class=cmp>genu 0.87 · blend 2.98 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 11</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>You always called me &#x27;old lady&#x27; when I forgot my keys. And you promised to teach me that TikTok dance. I should have said this sooner... I&#x27;m so sorry. Thank you. I love you. I love you. I love you.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 45-year-old mother with a warm, slightly husky timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is reading the opening of her child&#x27;s letter with a soft, nostalgic smile, laughing quietly at an inside joke.
+
+(a gentle laugh escapes) (voice warming) 
+
+CUT TO:
+
+The same voice now is deeper into the letter, her composure cracking as she reads a final confession, tears spilling over.
+
+(voice trembling) (barely a whisper) (a broken sigh) 
+
+The performance across both moments should feel like a widowed mother reliving her daughter&#x27;s voice, turning from gentle laughter to raw, unguarded grief.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g11_b_v6.mp3"></audio><div class=sc>reward <b>0.843</b></div><div class=cmp>genu 1.16 · blend 6.63 · 1−WER 0.73</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g11_b_v4.mp3"></audio><div class=sc>reward <b>0.620</b></div><div class=cmp>genu 1.21 · blend 7.61 · 1−WER 0.49</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g11_b_v1.mp3"></audio><div class=sc>reward <b>0.373</b></div><div class=cmp>genu 0.47 · blend 0.91 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 12</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>The radiator&#x27;s ticking again. Your hand still feels warm. I keep waiting to cry. It just... isn&#x27;t coming. I&#x27;m not ready. I&#x27;m not— Dad. Please. Just one more breath. Okay. I love you. Go.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 40-year-old woman with a soft, breathy voice that catches easily, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is hollow with shock, mechanically noting details to avoid feeling.
+
+(a slow exhale) &quot;The radiator&#x27;s ticking again. Your hand still feels warm.&quot; (a tiny, choked laugh) &quot;I keep waiting to cry. It just... isn&#x27;t coming.&quot;
+
+CUT TO:
+
+The same voice now raw and breaking, the truth spilling out in quiet disbelief.
+
+(a shaky inhale) &quot;I&#x27;m not ready. I&#x27;m not—&quot; (silence, then a whisper) &quot;Dad. Please. Just one more breath.&quot; (swallowing hard) &quot;Okay. I love you. Go.&quot;
+
+The performance across both moments should feel like a person slowly losing their grip on composure, moving from controlled observation to helpless love.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g12_a_v0.mp3"></audio><div class=sc>reward <b>0.499</b></div><div class=cmp>genu 1.21 · blend 8.37 · 1−WER 0.37</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g12_a_v9.mp3"></audio><div class=sc>reward <b>0.448</b></div><div class=cmp>genu 1.08 · blend 6.65 · 1−WER 0.39</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g12_a_v5.mp3"></audio><div class=sc>reward <b>0.427</b></div><div class=cmp>genu 1.07 · blend 7.68 · 1−WER 0.34</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 12</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>The radiator&#x27;s ticking again. Your hand still feels warm. I keep waiting to cry. It just... isn&#x27;t coming. I&#x27;m not ready. I&#x27;m not— Dad. Please. Just one more breath. Okay. I love you. Go.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 40-year-old woman with a soft, breathy voice that catches easily, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is hollow with shock, mechanically noting details to avoid feeling.
+
+(a slow exhale) (a tiny, choked laugh) 
+
+CUT TO:
+
+The same voice now raw and breaking, the truth spilling out in quiet disbelief.
+
+(a shaky inhale) (silence, then a whisper) (swallowing hard) 
+
+The performance across both moments should feel like a person slowly losing their grip on composure, moving from controlled observation to helpless love.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g12_b_v2.mp3"></audio><div class=sc>reward <b>1.080</b></div><div class=cmp>genu 1.65 · blend 5.06 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g12_b_v10.mp3"></audio><div class=sc>reward <b>0.566</b></div><div class=cmp>genu 1.27 · blend 1.12 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g12_b_v8.mp3"></audio><div class=sc>reward <b>0.440</b></div><div class=cmp>genu 0.96 · blend 6.68 · 1−WER 0.39</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 13</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Hey, it&#x27;s me. Just got a minute before we head out. Yeah, I know, I always call at weird hours. Don&#x27;t worry, it&#x27;s nothing serious. Just wanted to hear your voice. Anyway, how was your day? I was thinking about your coffee routine. The way you hum. I&#x27;ll miss that. I love you. I just wanted you to know. Say my name one more time.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 32-year-old male with a warm, slightly raspy tenor, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is trying to sound casually cheerful, forcing lightness into each word.
+
+(clears throat, forcing a smile) &quot;Hey, it&#x27;s me. Just got a minute before we head out. Yeah, I know, I always call at weird hours.&quot; (soft laugh) &quot;Don&#x27;t worry, it&#x27;s nothing serious. Just wanted to hear your voice.&quot; (pauses, swallowing) &quot;Anyway, how was your day?&quot;
+
+CUT TO:
+
+The same voice now cracking under the weight of unspoken goodbye, each sentence a struggle.
+
+(voice trembling) &quot;I was thinking about your coffee routine. The way you hum. I&#x27;ll miss that.&quot; (barely above whisper) &quot;I love you. I just wanted you to know.&quot; (breath catches) &quot;Say my name one more time.&quot;
+
+The performance across both moments should feel like a man trying to hold a fragile lie together until the truth of his love breaks it apart.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g13_a_v14.mp3"></audio><div class=sc>reward <b>0.756</b></div><div class=cmp>genu 1.62 · blend 2.28 · 1−WER 0.99</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g13_a_v4.mp3"></audio><div class=sc>reward <b>0.645</b></div><div class=cmp>genu 1.00 · blend 4.12 · 1−WER 0.77</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g13_a_v15.mp3"></audio><div class=sc>reward <b>0.601</b></div><div class=cmp>genu 1.17 · blend 1.72 · 1−WER 0.99</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 13</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Hey, it&#x27;s me. Just got a minute before we head out. Yeah, I know, I always call at weird hours. Don&#x27;t worry, it&#x27;s nothing serious. Just wanted to hear your voice. Anyway, how was your day? I was thinking about your coffee routine. The way you hum. I&#x27;ll miss that. I love you. I just wanted you to know. Say my name one more time.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 32-year-old male with a warm, slightly raspy tenor, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is trying to sound casually cheerful, forcing lightness into each word.
+
+(clears throat, forcing a smile) (soft laugh) (pauses, swallowing) 
+
+CUT TO:
+
+The same voice now cracking under the weight of unspoken goodbye, each sentence a struggle.
+
+(voice trembling) (barely above whisper) (breath catches) 
+
+The performance across both moments should feel like a man trying to hold a fragile lie together until the truth of his love breaks it apart.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g13_b_v0.mp3"></audio><div class=sc>reward <b>0.749</b></div><div class=cmp>genu 1.47 · blend 7.94 · 1−WER 0.55</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g13_b_v4.mp3"></audio><div class=sc>reward <b>0.635</b></div><div class=cmp>genu 1.00 · blend 3.99 · 1−WER 0.77</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g13_b_v11.mp3"></audio><div class=sc>reward <b>0.617</b></div><div class=cmp>genu 2.15 · blend 0.00 · 1−WER 0.99</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 14</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Well, at least you&#x27;ll finally get some peace and quiet, right? No more of my terrible cooking. And the view... god, the view will be something else. I should have said it every day. Every stupid, ordinary day. Thank you for existing. For letting me love you. I love you.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 35-year-old woman with a warm, slightly raspy alto, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is forcing cheerfulness, making jokes to mask the grief, but a crack betrays her each time.
+
+(swallowing hard, forcing a smile) &quot;Well, at least you&#x27;ll finally get some peace and quiet, right? No more of my terrible cooking.&quot; (breath hitching, looking away) &quot;And the view... god, the view will be something else.&quot;
+
+CUT TO:
+
+The same voice now shatters into quiet devastation, throat closing, words raw and barely above a whisper as gratitude fights the loss.
+
+(voice trembling, almost breaking) &quot;I should have said it every day. Every stupid, ordinary day.&quot; (a shaky exhale, then fierce and fragile) &quot;Thank you for existing. For letting me love you.&quot; (barely audible, pure truth) &quot;I love you.&quot;
+
+The performance across both moments should feel like a person losing a battle against their own grief, from brittle comedy to a stripped-bare surrender.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g14_a_v4.mp3"></audio><div class=sc>reward <b>0.679</b></div><div class=cmp>genu 1.14 · blend 7.45 · 1−WER 0.55</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g14_a_v10.mp3"></audio><div class=sc>reward <b>0.638</b></div><div class=cmp>genu 1.33 · blend 3.63 · 1−WER 0.75</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g14_a_v11.mp3"></audio><div class=sc>reward <b>0.615</b></div><div class=cmp>genu 0.77 · blend 3.40 · 1−WER 0.86</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 14</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Well, at least you&#x27;ll finally get some peace and quiet, right? No more of my terrible cooking. And the view... god, the view will be something else. I should have said it every day. Every stupid, ordinary day. Thank you for existing. For letting me love you. I love you.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 35-year-old woman with a warm, slightly raspy alto, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is forcing cheerfulness, making jokes to mask the grief, but a crack betrays her each time.
+
+(swallowing hard, forcing a smile) (breath hitching, looking away) 
+
+CUT TO:
+
+The same voice now shatters into quiet devastation, throat closing, words raw and barely above a whisper as gratitude fights the loss.
+
+(voice trembling, almost breaking) (a shaky exhale, then fierce and fragile) (barely audible, pure truth) 
+
+The performance across both moments should feel like a person losing a battle against their own grief, from brittle comedy to a stripped-bare surrender.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g14_b_v4.mp3"></audio><div class=sc>reward <b>0.956</b></div><div class=cmp>genu 1.92 · blend 3.41 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g14_b_v14.mp3"></audio><div class=sc>reward <b>0.745</b></div><div class=cmp>genu 0.94 · blend 5.45 · 1−WER 0.76</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g14_b_v11.mp3"></audio><div class=sc>reward <b>0.549</b></div><div class=cmp>genu 1.54 · blend 4.54 · 1−WER 0.55</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 15</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Ich habe das für dich gemacht. Es ist nur... ein bisschen schief, aber. Weißt du, ich hab’ mir was dabei gedacht. Ganz leise, nur für uns.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 15-year-old female with a clear, youthful timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is shy and breathless, leaning forward as she holds out a folded paper flower, her heart hammering with hopeful gratitude.
+
+(exhaling quickly) &quot;Ich habe das für dich gemacht.&quot; (glancing up then down) &quot;Es ist nur... ein bisschen schief, aber.&quot;
+
+CUT TO:
+
+The same voice now lowers into a slow, velvety register, a triumphant smile spreading as she watches the adult&#x27;s face, her words becoming deliberate and charged with a longing she barely understands.
+
+(pausing, tilting her head) &quot;Weißt du, ich hab’ mir was dabei gedacht.&quot; (breathy laugh) &quot;Ganz leise, nur für uns.&quot;
+
+The performance across both moments should feel like a shy confession that blooms into a quiet, knowing seduction, then cuts to a vulnerable thrill that teeters on the edge of being seen.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g15_a_v10.mp3"></audio><div class=sc>reward <b>0.720</b></div><div class=cmp>genu 1.64 · blend 2.08 · 1−WER 0.96</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g15_a_v5.mp3"></audio><div class=sc>reward <b>0.628</b></div><div class=cmp>genu 1.65 · blend 7.60 · 1−WER 0.46</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g15_a_v14.mp3"></audio><div class=sc>reward <b>0.598</b></div><div class=cmp>genu 1.77 · blend 5.89 · 1−WER 0.50</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 15</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Ich habe das für dich gemacht. Es ist nur... ein bisschen schief, aber. Weißt du, ich hab’ mir was dabei gedacht. Ganz leise, nur für uns.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 15-year-old female with a clear, youthful timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is shy and breathless, leaning forward as she holds out a folded paper flower, her heart hammering with hopeful gratitude.
+
+(exhaling quickly) (glancing up then down) 
+
+CUT TO:
+
+The same voice now lowers into a slow, velvety register, a triumphant smile spreading as she watches the adult&#x27;s face, her words becoming deliberate and charged with a longing she barely understands.
+
+(pausing, tilting her head) (breathy laugh) 
+
+The performance across both moments should feel like a shy confession that blooms into a quiet, knowing seduction, then cuts to a vulnerable thrill that teeters on the edge of being seen.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g15_b_v9.mp3"></audio><div class=sc>reward <b>1.513</b></div><div class=cmp>genu 2.18 · blend 8.51 · 1−WER 0.96</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g15_b_v8.mp3"></audio><div class=sc>reward <b>1.501</b></div><div class=cmp>genu 2.45 · blend 7.89 · 1−WER 0.96</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g15_b_v7.mp3"></audio><div class=sc>reward <b>1.441</b></div><div class=cmp>genu 2.96 · blend 6.91 · 1−WER 0.92</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 16</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Le cymothoa exigua remplace la langue du poisson. Une manipulation si parfaite. J&#x27;aimerais t&#x27;offrir une telle symbiose. Qu&#x27;est-ce que je viens de dire? Ce n&#x27;est pas moi. Je... je suis désolée. Rien de personnel.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 16-year-old female with a clear, projecting voice, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is delivering a biology report with growing awe, then turning malevolent as she spots the bully in the back row.
+
+(projecting across the room) &quot;Le cymothoa exigua remplace la langue du poisson. Une manipulation si parfaite.&quot; (voice hardening, almost tender) &quot;J&#x27;aimerais t&#x27;offrir une telle symbiose.&quot;
+
+CUT TO:
+
+The same voice now catches herself, her malevolence replaced by sudden guilt and shaky confusion.
+
+(voice trembling) &quot;Qu&#x27;est-ce que je viens de dire? Ce n&#x27;est pas moi.&quot; (blinking at notecard) &quot;Je... je suis désolée. Rien de personnel.&quot;
+
+The performance across both moments should feel like a teenager losing control of her darker impulses then recoiling from them.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g16_a_v7.mp3"></audio><div class=sc>reward <b>1.030</b></div><div class=cmp>genu 2.16 · blend 4.13 · 1−WER 0.95</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g16_a_v3.mp3"></audio><div class=sc>reward <b>0.838</b></div><div class=cmp>genu 1.44 · blend 5.88 · 1−WER 0.74</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g16_a_v0.mp3"></audio><div class=sc>reward <b>0.576</b></div><div class=cmp>genu 1.70 · blend 7.13 · 1−WER 0.44</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 16</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Le cymothoa exigua remplace la langue du poisson. Une manipulation si parfaite. J&#x27;aimerais t&#x27;offrir une telle symbiose. Qu&#x27;est-ce que je viens de dire? Ce n&#x27;est pas moi. Je... je suis désolée. Rien de personnel.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 16-year-old female with a clear, projecting voice, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is delivering a biology report with growing awe, then turning malevolent as she spots the bully in the back row.
+
+(projecting across the room) (voice hardening, almost tender) 
+
+CUT TO:
+
+The same voice now catches herself, her malevolence replaced by sudden guilt and shaky confusion.
+
+(voice trembling) (blinking at notecard) 
+
+The performance across both moments should feel like a teenager losing control of her darker impulses then recoiling from them.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g16_b_v5.mp3"></audio><div class=sc>reward <b>1.051</b></div><div class=cmp>genu 1.79 · blend 7.38 · 1−WER 0.77</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g16_b_v14.mp3"></audio><div class=sc>reward <b>1.033</b></div><div class=cmp>genu 1.80 · blend 4.85 · 1−WER 0.95</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g16_b_v11.mp3"></audio><div class=sc>reward <b>0.774</b></div><div class=cmp>genu 1.50 · blend 3.16 · 1−WER 0.92</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 17</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Cuéntame más sobre eso, de verdad me interesa tu punto de vista. ¿Qué fue lo que te llevó a pensar así? Basta. No necesito escuchar más. Eso no es una opinión, es una excusa.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 42-year-old woman with a warm, honeyed alto voice that carries a quiet authority, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is leaning in toward the microphone with eager curiosity, a gentle smile in her tone as she invites the guest to share more.
+
+(breathily, inviting) &quot;Cuéntame más sobre eso, de verdad me interesa tu punto de vista.&quot; (leaning closer, soft hum) &quot;¿Qué fue lo que te llevó a pensar así?&quot;
+
+CUT TO:
+
+The same voice now has gone flat and cold, her jaw tight, the warmth replaced by a low, tightly controlled disgust as she cuts the guest off.
+
+(sharp exhale, voice dropping) &quot;Basta. No necesito escuchar más.&quot; (icily precise) &quot;Eso no es una opinión, es una excusa.&quot;
+
+The performance across both moments should feel like the collapse of a polite facade into genuine, chilling contempt.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g17_a_v0.mp3"></audio><div class=sc>reward <b>1.078</b></div><div class=cmp>genu 1.60 · blend 5.13 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g17_a_v8.mp3"></audio><div class=sc>reward <b>0.902</b></div><div class=cmp>genu 1.77 · blend 3.74 · 1−WER 0.94</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g17_a_v15.mp3"></audio><div class=sc>reward <b>0.645</b></div><div class=cmp>genu 1.04 · blend 2.29 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 17</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Cuéntame más sobre eso, de verdad me interesa tu punto de vista. ¿Qué fue lo que te llevó a pensar así? Basta. No necesito escuchar más. Eso no es una opinión, es una excusa.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 42-year-old woman with a warm, honeyed alto voice that carries a quiet authority, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is leaning in toward the microphone with eager curiosity, a gentle smile in her tone as she invites the guest to share more.
+
+(breathily, inviting) (leaning closer, soft hum) 
+
+CUT TO:
+
+The same voice now has gone flat and cold, her jaw tight, the warmth replaced by a low, tightly controlled disgust as she cuts the guest off.
+
+(sharp exhale, voice dropping) (icily precise) 
+
+The performance across both moments should feel like the collapse of a polite facade into genuine, chilling contempt.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g17_b_v14.mp3"></audio><div class=sc>reward <b>0.994</b></div><div class=cmp>genu 1.52 · blend 4.52 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g17_b_v2.mp3"></audio><div class=sc>reward <b>0.918</b></div><div class=cmp>genu 1.84 · blend 3.23 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g17_b_v1.mp3"></audio><div class=sc>reward <b>0.849</b></div><div class=cmp>genu 1.58 · blend 5.46 · 1−WER 0.76</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 18</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Hör auf damit. Ich hab keine Angst vor dir. Warum hasst du mich eigentlich so? Was hab ich getan? Ach, die Frau Schmidt. Na super. Die geht gleich wieder. Ist schon okay. Ist ja immer so. Gerechtigkeit für alle.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 10-year-old boy with a thin, reedy voice that cracks under pressure, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is trembling with confused rage, back pressed against cold metal, trying to sound tough but his throat tightens with fear.
+
+(faking a growl, voice cracks) &quot;Hör auf damit. Ich hab keine Angst vor dir.&quot; (shifts weight, sniffs) &quot;Warum hasst du mich eigentlich so? Was hab ich getan?&quot;
+
+CUT TO:
+
+The same voice now slumps with sour relief, spotting a teacher over the bully&#x27;s shoulder, but his shoulders stay rigid knowing it&#x27;s only temporary.
+
+(whispered, bitter) &quot;Ach, die Frau Schmidt. Na super. Die geht gleich wieder.&quot; (spits the words) &quot;Ist schon okay. Ist ja immer so. Gerechtigkeit für alle.&quot;
+
+The performance across both moments should feel like a real kid trying to stay brave, then resigning to the unfairness with a tired, knowing sigh.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g18_a_v1.mp3"></audio><div class=sc>reward <b>1.117</b></div><div class=cmp>genu 2.26 · blend 5.39 · 1−WER 0.90</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g18_a_v11.mp3"></audio><div class=sc>reward <b>0.975</b></div><div class=cmp>genu 2.09 · blend 4.00 · 1−WER 0.92</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g18_a_v10.mp3"></audio><div class=sc>reward <b>0.832</b></div><div class=cmp>genu 1.65 · blend 7.50 · 1−WER 0.62</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 18</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Hör auf damit. Ich hab keine Angst vor dir. Warum hasst du mich eigentlich so? Was hab ich getan? Ach, die Frau Schmidt. Na super. Die geht gleich wieder. Ist schon okay. Ist ja immer so. Gerechtigkeit für alle.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 10-year-old boy with a thin, reedy voice that cracks under pressure, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is trembling with confused rage, back pressed against cold metal, trying to sound tough but his throat tightens with fear.
+
+(faking a growl, voice cracks) (shifts weight, sniffs) 
+
+CUT TO:
+
+The same voice now slumps with sour relief, spotting a teacher over the bully&#x27;s shoulder, but his shoulders stay rigid knowing it&#x27;s only temporary.
+
+(whispered, bitter) (spits the words) 
+
+The performance across both moments should feel like a real kid trying to stay brave, then resigning to the unfairness with a tired, knowing sigh.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g18_b_v0.mp3"></audio><div class=sc>reward <b>1.164</b></div><div class=cmp>genu 1.93 · blend 6.16 · 1−WER 0.92</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g18_b_v5.mp3"></audio><div class=sc>reward <b>1.026</b></div><div class=cmp>genu 2.10 · blend 4.49 · 1−WER 0.92</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g18_b_v15.mp3"></audio><div class=sc>reward <b>0.946</b></div><div class=cmp>genu 1.79 · blend 4.29 · 1−WER 0.92</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 19</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Ich... ich muss kurz... mich setzen. Was war in der Flasche? Meine Beine... die gehen gar nicht mehr. Du hast mein Salz genommen. Das war geplant. Ich vergesse so was nicht.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 45-year-old woman with a once-bright voice now gravelly and drained, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is physically buckling at mile 22, legs shaking, mind blank, words slurring as she leans against a tree and fights to form a single coherent thought.
+
+(breathing ragged, presses hand to trunk) &quot;Ich... ich muss kurz... mich setzen. Was war in der Flasche?&quot; (swallows dryly, voice fading) &quot;Meine Beine... die gehen gar nicht mehr.&quot;
+
+CUT TO:
+
+The same voice now still and eerily quiet, a thread of cold venom slipping through the exhaustion as the realization crystallizes into a flat, measured promise.
+
+(voice very low, almost a whisper) &quot;Du hast mein Salz genommen. Das war geplant.&quot; (pauses, then a thin, empty smile) &quot;Ich vergesse so was nicht.&quot;
+
+The performance across both moments should feel like a single body collapsing into numbness, then finding a sharp, quiet hatred in the wreckage.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g19_a_v13.mp3"></audio><div class=sc>reward <b>1.492</b></div><div class=cmp>genu 2.34 · blend 8.41 · 1−WER 0.94</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g19_a_v7.mp3"></audio><div class=sc>reward <b>1.489</b></div><div class=cmp>genu 2.54 · blend 8.51 · 1−WER 0.90</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g19_a_v1.mp3"></audio><div class=sc>reward <b>1.247</b></div><div class=cmp>genu 1.85 · blend 7.40 · 1−WER 0.90</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 19</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Ich... ich muss kurz... mich setzen. Was war in der Flasche? Meine Beine... die gehen gar nicht mehr. Du hast mein Salz genommen. Das war geplant. Ich vergesse so was nicht.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 45-year-old woman with a once-bright voice now gravelly and drained, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is physically buckling at mile 22, legs shaking, mind blank, words slurring as she leans against a tree and fights to form a single coherent thought.
+
+(breathing ragged, presses hand to trunk) (swallows dryly, voice fading) 
+
+CUT TO:
+
+The same voice now still and eerily quiet, a thread of cold venom slipping through the exhaustion as the realization crystallizes into a flat, measured promise.
+
+(voice very low, almost a whisper) (pauses, then a thin, empty smile) 
+
+The performance across both moments should feel like a single body collapsing into numbness, then finding a sharp, quiet hatred in the wreckage.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g19_b_v9.mp3"></audio><div class=sc>reward <b>1.140</b></div><div class=cmp>genu 1.93 · blend 6.17 · 1−WER 0.90</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g19_b_v8.mp3"></audio><div class=sc>reward <b>0.691</b></div><div class=cmp>genu 1.26 · blend 2.96 · 1−WER 0.90</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g19_b_v5.mp3"></audio><div class=sc>reward <b>0.415</b></div><div class=cmp>genu 1.74 · blend 6.74 · 1−WER 0.32</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 20</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Just one more minute... then I&#x27;ll see her. The air tastes like dust and waiting. No... not again... you bitch, you left me... I&#x27;ll make you stay...</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 32-year-old man with a gritty, hooded baritone, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is leaning into the cool brick, breath slow, eyes half-lidded with tender ache.
+
+(soft exhale through nose) &quot;Just one more minute... then I&#x27;ll see her.&quot; (fingertip tracing the wall) &quot;The air tastes like dust and waiting.&quot;
+
+CUT TO:
+
+The same voice now — lungs searing, ribs hammered by the extinguisher, every syllable punched out through clenched teeth.
+
+(gasping on a bound) &quot;No... not again...&quot; (pushing past a sob) &quot;you bitch, you left me... I&#x27;ll make you stay...&quot;
+
+The performance across both moments should feel like a man who was dreaming with his eyes open, then was violently wrenched into a burning stairwell — the tenderness shattered into a war with his own body.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g20_a_v6.mp3"></audio><div class=sc>reward <b>1.333</b></div><div class=cmp>genu 1.92 · blend 6.82 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g20_a_v7.mp3"></audio><div class=sc>reward <b>0.962</b></div><div class=cmp>genu 1.73 · blend 3.83 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g20_a_v15.mp3"></audio><div class=sc>reward <b>0.922</b></div><div class=cmp>genu 1.11 · blend 6.83 · 1−WER 0.79</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 20</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Just one more minute... then I&#x27;ll see her. The air tastes like dust and waiting. No... not again... you bitch, you left me... I&#x27;ll make you stay...</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 32-year-old man with a gritty, hooded baritone, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is leaning into the cool brick, breath slow, eyes half-lidded with tender ache.
+
+(soft exhale through nose) (fingertip tracing the wall) 
+
+CUT TO:
+
+The same voice now — lungs searing, ribs hammered by the extinguisher, every syllable punched out through clenched teeth.
+
+(gasping on a bound) (pushing past a sob) 
+
+The performance across both moments should feel like a man who was dreaming with his eyes open, then was violently wrenched into a burning stairwell — the tenderness shattered into a war with his own body.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g20_b_v2.mp3"></audio><div class=sc>reward <b>1.204</b></div><div class=cmp>genu 2.02 · blend 5.47 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g20_b_v10.mp3"></audio><div class=sc>reward <b>1.052</b></div><div class=cmp>genu 1.63 · blend 4.84 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g20_b_v1.mp3"></audio><div class=sc>reward <b>0.778</b></div><div class=cmp>genu 1.45 · blend 2.71 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 21</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Just you and me now, old friend. One more year to savor. Oh fuck — oh God — my hair — it&#x27;s burning — Shit — get it off —</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 50-year-old man with a weathered, gravelly baritone, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is leaning close to a candle, breath warm and slow, savoring the quiet comfort.
+
+(soft exhale) &quot;Just you and me now, old friend.&quot; (a gentle pause) &quot;One more year to savor.&quot;
+
+CUT TO:
+
+The same voice now jolted as fire catches his hair, voice cracking into a ragged, high-pitched shriek.
+
+(gasping, frantic) &quot;Oh fuck — oh God — my hair — it&#x27;s burning —&quot; (choking sob) &quot;Shit — get it off —&quot;
+
+The performance across both moments should feel like a brutal snap from tender stillness to raw, animal panic.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g21_a_v10.mp3"></audio><div class=sc>reward <b>0.870</b></div><div class=cmp>genu 0.73 · blend 5.57 · 1−WER 0.92</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g21_a_v11.mp3"></audio><div class=sc>reward <b>0.734</b></div><div class=cmp>genu 1.12 · blend 6.05 · 1−WER 0.68</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g21_a_v8.mp3"></audio><div class=sc>reward <b>0.605</b></div><div class=cmp>genu 0.85 · blend 4.85 · 1−WER 0.68</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 21</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Just you and me now, old friend. One more year to savor. Oh fuck — oh God — my hair — it&#x27;s burning — Shit — get it off —</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 50-year-old man with a weathered, gravelly baritone, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is leaning close to a candle, breath warm and slow, savoring the quiet comfort.
+
+(soft exhale) (a gentle pause) 
+
+CUT TO:
+
+The same voice now jolted as fire catches his hair, voice cracking into a ragged, high-pitched shriek.
+
+(gasping, frantic) (choking sob) 
+
+The performance across both moments should feel like a brutal snap from tender stillness to raw, animal panic.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g21_b_v12.mp3"></audio><div class=sc>reward <b>0.893</b></div><div class=cmp>genu 1.73 · blend 3.91 · 1−WER 0.92</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g21_b_v11.mp3"></audio><div class=sc>reward <b>0.856</b></div><div class=cmp>genu 1.27 · blend 4.41 · 1−WER 0.92</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g21_b_v13.mp3"></audio><div class=sc>reward <b>0.767</b></div><div class=cmp>genu 0.80 · blend 6.03 · 1−WER 0.76</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 22</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Just one more time... I need to hear you again. No— that&#x27;s not— it can&#x27;t be—</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 17-year-old female teenager with a honey-soft, slightly husky timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is lying in bed, body loose, breath slow, tracing the screen with her fingertip as she savors the ghost of a connection.
+
+(soft exhale through parted lips) &quot;Just one more time...&quot; (fingertip hovering over the screen) &quot;I need to hear you again.&quot;
+
+CUT TO:
+
+The same voice now violently wrenched into a raw, gut-level startle; her throat seizes, breath torn away, a sob erupting before she can stop it.
+
+(strangled gasp) &quot;No— that&#x27;s not— it can&#x27;t be—&quot; (voice shatters into a high, ragged wail, then breaking into choked, shuddering breaths as she curls into a ball)
+
+The performance across both moments should feel like a lullaby snapped into a scream, a single word detonating a girl&#x27;s entire world.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g22_a_v1.mp3"></audio><div class=sc>reward <b>1.603</b></div><div class=cmp>genu 2.05 · blend 9.02 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g22_a_v11.mp3"></audio><div class=sc>reward <b>1.217</b></div><div class=cmp>genu 1.97 · blend 5.69 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g22_a_v3.mp3"></audio><div class=sc>reward <b>1.000</b></div><div class=cmp>genu 1.32 · blend 4.96 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 22</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Just one more time... I need to hear you again. No— that&#x27;s not— it can&#x27;t be—</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 17-year-old female teenager with a honey-soft, slightly husky timbre, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is lying in bed, body loose, breath slow, tracing the screen with her fingertip as she savors the ghost of a connection.
+
+(soft exhale through parted lips) (fingertip hovering over the screen) 
+
+CUT TO:
+
+The same voice now violently wrenched into a raw, gut-level startle; her throat seizes, breath torn away, a sob erupting before she can stop it.
+
+(strangled gasp) (voice shatters into a high, ragged wail, then breaking into choked, shuddering breaths as she curls into a ball)
+
+The performance across both moments should feel like a lullaby snapped into a scream, a single word detonating a girl&#x27;s entire world.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g22_b_v11.mp3"></audio><div class=sc>reward <b>1.543</b></div><div class=cmp>genu 1.78 · blend 8.99 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g22_b_v7.mp3"></audio><div class=sc>reward <b>1.176</b></div><div class=cmp>genu 1.49 · blend 6.23 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g22_b_v10.mp3"></audio><div class=sc>reward <b>0.969</b></div><div class=cmp>genu 1.10 · blend 5.09 · 1−WER 1.00</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 23</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>This is it. This is the one. Thank you for this silence, this glass. Th-thank you—I c-can&#x27;t—can&#x27;t breathe— but thank you—for this—this black kiss.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 35-year-old man with a hushed, resonant voice that carries the stillness of winter air, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is a photographer kneeling at a frozen quarry pool, whispering to himself in fragile awe as the cold seeps into his bones.
+
+(breathing slowly) &quot;This is it. This is the one.&quot; (voice barely above a breath) &quot;Thank you for this silence, this glass.&quot;
+
+CUT TO:
+
+The same voice now gasping, drowning, every word a shattered fist against the vise of ice water that clamps his chest and steals his air.
+
+(teeth chattering violently) &quot;Th-thank you—I c-can&#x27;t—can&#x27;t breathe—&quot; (a raw, broken sob) &quot;but thank you—for this—this black kiss.&quot;
+
+The performance across both moments should feel like a single soul torn from ecstatic stillness into violent gratitude, where each word is a prayer dragged from the jaws of death.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g23_a_v13.mp3"></audio><div class=sc>reward <b>0.580</b></div><div class=cmp>genu 1.73 · blend 7.12 · 1−WER 0.44</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g23_a_v8.mp3"></audio><div class=sc>reward <b>0.571</b></div><div class=cmp>genu 2.30 · blend 7.82 · 1−WER 0.38</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g23_a_v11.mp3"></audio><div class=sc>reward <b>0.567</b></div><div class=cmp>genu 1.86 · blend 6.60 · 1−WER 0.44</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 23</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>This is it. This is the one. Thank you for this silence, this glass. Th-thank you—I c-can&#x27;t—can&#x27;t breathe— but thank you—for this—this black kiss.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 35-year-old man with a hushed, resonant voice that carries the stillness of winter air, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is a photographer kneeling at a frozen quarry pool, whispering to himself in fragile awe as the cold seeps into his bones.
+
+(breathing slowly) (voice barely above a breath) 
+
+CUT TO:
+
+The same voice now gasping, drowning, every word a shattered fist against the vise of ice water that clamps his chest and steals his air.
+
+(teeth chattering violently) (a raw, broken sob) 
+
+The performance across both moments should feel like a single soul torn from ecstatic stillness into violent gratitude, where each word is a prayer dragged from the jaws of death.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g23_b_v10.mp3"></audio><div class=sc>reward <b>0.925</b></div><div class=cmp>genu 1.13 · blend 5.51 · 1−WER 0.91</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g23_b_v4.mp3"></audio><div class=sc>reward <b>0.739</b></div><div class=cmp>genu 1.68 · blend 2.13 · 1−WER 0.97</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g23_b_v12.mp3"></audio><div class=sc>reward <b>0.735</b></div><div class=cmp>genu 1.69 · blend 2.54 · 1−WER 0.91</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 24</span><span class="tag sd">Scenario-driven</span><span class="tag v">A · with quoted lines in the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Yeah, baby... come on... Look at you... SHIT!— Fuck... I&#x27;m... I&#x27;m here... oh god... I&#x27;m still here.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 28-year-old man with a gravel-throated, wind-raw tenor, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is coasting on a bike, sweat cooling, body humming with smug desire, watching a woman on the sidewalk.
+
+(slow, hot exhale) &quot;Yeah, baby... come on...&quot; (eyes tracking, throat a low growl) &quot;Look at you...&quot;
+
+CUT TO:
+
+The same voice now yanked into a blind-side swerve, mirror slashing past his temple, terror snapping his jaw open.
+
+(air ripped from chest) &quot;SHIT!—&quot; (gasp, ragged, disbelieving) &quot;Fuck... I&#x27;m... I&#x27;m here... oh god... I&#x27;m still here.&quot;
+
+The performance across both moments should feel like a single animal going from purr to scream, the same body in two impossible extremes.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g24_a_v0.mp3"></audio><div class=sc>reward <b>0.709</b></div><div class=cmp>genu 0.97 · blend 5.74 · 1−WER 0.70</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g24_a_v13.mp3"></audio><div class=sc>reward <b>0.507</b></div><div class=cmp>genu 1.68 · blend 8.32 · 1−WER 0.35</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g24_a_v1.mp3"></audio><div class=sc>reward <b>0.503</b></div><div class=cmp>genu -0.04 · blend 3.29 · 1−WER 0.95</div></div></div></div><div class=card><div class=chd><span class=gid>prompt 24</span><span class="tag sd">Scenario-driven</span><span class="tag v">B · quoted lines removed from the instruction</span><span class=mut style="font-size:11px">3 shown · top-3 of a random 8</span></div><div class=prompt><div class=pl>Spoken text ("what to say")</div>Yeah, baby... come on... Look at you... SHIT!— Fuck... I&#x27;m... I&#x27;m here... oh god... I&#x27;m still here.</div><details class=instr><summary>performance instruction ("how to say")</summary><pre>A 28-year-old man with a gravel-throated, wind-raw tenor, delivering this high-quality studio voice recording with no background noise.
+
+The same voice is coasting on a bike, sweat cooling, body humming with smug desire, watching a woman on the sidewalk.
+
+(slow, hot exhale) (eyes tracking, throat a low growl) 
+
+CUT TO:
+
+The same voice now yanked into a blind-side swerve, mirror slashing past his temple, terror snapping his jaw open.
+
+(air ripped from chest) (gasp, ragged, disbelieving) 
+
+The performance across both moments should feel like a single animal going from purr to scream, the same body in two impossible extremes.</pre></details><div class=strip><div class=tk><div class=rk>#1</div><audio controls preload=none src="media/g24_b_v4.mp3"></audio><div class=sc>reward <b>0.964</b></div><div class=cmp>genu 1.44 · blend 4.40 · 1−WER 1.00</div></div><div class=tk><div class=rk>#2</div><audio controls preload=none src="media/g24_b_v5.mp3"></audio><div class=sc>reward <b>0.945</b></div><div class=cmp>genu 1.28 · blend 4.53 · 1−WER 1.00</div></div><div class=tk><div class=rk>#3</div><audio controls preload=none src="media/g24_b_v10.mp3"></audio><div class=sc>reward <b>0.811</b></div><div class=cmp>genu 1.49 · blend 2.92 · 1−WER 1.00</div></div></div></div>
+</div></body></html>

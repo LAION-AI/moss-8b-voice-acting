@@ -55,6 +55,17 @@ fine-tuned model. Play the clips directly in your browser.</p>
 <a class="card" href="scaling_pilot/samples.html">
   <div class="t">🎧 Top-3 audio samples per group</div>
   <div class="d">The best 3 takes of every group across the scaling study, ranked by the combined reward, each with its spoken text, performance instruction, and scores.</div></a>
+
+<h2>Prompting ablation</h2>
+<a class="card" href="prompting_ablation/index.html">
+  <div class="t">Prompting style × sample size</div>
+  <div class="d">Does keeping the quoted lines inside a structured two-part performance prompt help or hurt vs.
+  passing them only as the text to speak? 25 prompts × 2 instruction variants × 16 no-reference takes,
+  scored on combined reward, with a best-of-<code>k</code> (4/6/8/16) scaling curve — split by
+  character-consistent vs. scenario-driven pathways.
+  <a href="prompting_ablation/grid_top3.html">🎧&nbsp;top-3 of 16</a> ·
+  <a href="prompting_ablation/grid_bestof8.html">best-of-8</a>.</div></a>
+
 <h2>Checkpoint eval</h2>
 <a class="card" href="checkpoint_eval.html">
   <div class="t">Held-out emotional prompts</div>
