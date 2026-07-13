@@ -48,6 +48,15 @@ fine-tuned model. Play the clips directly in your browser.</p>
   <div class="t">Best-of-100 across speaker identities (pilot)</div>
   <div class="d">Best-of-100 selection, and whether the uplift over the reference holds when the same performance is voice-converted (via Chatterbox VC, +0–50% random speed-up) to two different speaker identities — EN + DE translation. Pilot subset with conclusions &amp; per-group audio.</div></a>
 
+<h2>Reproduce study</h2>
+<a class="card" href="reproduce_study/index.html">
+  <div class="t">Reproduce-and-improve, ranked two ways</div>
+  <div class="d">25 expressive reference performances × 3 temperatures × best-of-8. Clone each voice, then rank
+  the takes with <b>two independent rewards</b>: a voice-identity combined reward (ECAPA speaker-sim + invWER +
+  genuineness + blend + duration) and an <b>emotion-profile reward</b> — cosine of a 42-dim EmoNet emotion vector
+  (Empathic-Insight-Voice-Plus on BUD-E-Whisper) × invWER. Per temperature × group: reference clip + prompt +
+  best-of-8 top-3 under <em>both</em> rankings side by side. They disagree on ~48% of takes.</div></a>
+
 <h2>Scaling study</h2>
 <a class="card" href="scaling_pilot/index.html">
   <div class="t">Scaling pilot — throughput, best-of-N plateau &amp; Sidon</div>
