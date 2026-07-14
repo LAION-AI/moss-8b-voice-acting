@@ -1,0 +1,43 @@
+<style>:root{--bg:#0d1017;--panel:#141a25;--panel2:#101620;--line:#232c3b;--ink:#e7edf5;--mut:#8a95a8;
+--dim:#5f6b7e;--acc:#5fd0c4;--acc2:#e8b062;--good:#6bd08a;--bad:#e0796b;
+--mono:ui-monospace,"JetBrains Mono","SF Mono",Menlo,monospace;--sans:system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(1100px 460px at 82% -8%,#16202e,transparent 60%),var(--bg);
+color:var(--ink);font-family:var(--sans);line-height:1.55}.wrap{max-width:960px;margin:0 auto;padding:36px 20px 90px}
+.mono{font-family:var(--mono)}a{color:var(--acc)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+h1{font-family:var(--mono);font-weight:700;font-size:26px;margin:0 0 10px;letter-spacing:-.01em;text-wrap:balance}
+h1 .hl{color:var(--acc)}h2{font-family:var(--mono);font-size:18px;margin:34px 0 10px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-family:var(--mono);font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--acc2);margin:18px 0 8px}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 8px}
+.nav a{font-family:var(--mono);font-size:12px;padding:6px 12px;border:1px solid var(--line);border-radius:7px;text-decoration:none;background:var(--panel)}
+.explain{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:12px;padding:18px 20px;margin:20px 0}
+.explain p{color:#cdd5e0;font-size:14px;margin:8px 0;max-width:76ch}.explain b{color:var(--ink)}
+.kpi{display:inline-block;background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--acc);border-radius:10px;padding:14px 16px;margin:6px 10px 6px 0}
+.kpi b{display:block;font-family:var(--mono);font-size:22px;color:var(--acc)}.kpi span{font-size:12px;color:var(--mut)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;margin:8px 0}
+.tw{overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:right;white-space:nowrap}
+th{background:var(--panel);color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+td:first-child,th:first-child{text-align:left;color:var(--ink)}
+.win{color:var(--good);font-weight:700}.chart{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px;margin:14px 0}
+.chart svg{width:100%;height:auto;display:block}
+.note{font-size:13.5px;color:var(--mut);border-left:2px solid var(--line);padding-left:14px;margin:14px 0;max-width:76ch}
+.pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.pchd{font-family:var(--mono);font-size:13px;color:var(--ink);margin-bottom:4px}
+.tag{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:5px;border:1px solid var(--line);color:var(--mut);margin-right:6px}
+.tag.cc{color:var(--acc);border-color:#274a47}.tag.noncc{color:var(--acc2);border-color:#4a3d27}
+.dia{font-size:13px;color:#c7d0dc;margin:6px 0}.dia b{color:var(--acc);font-family:var(--mono);font-size:11px}
+.variants{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:10px}
+.variant{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:10px}
+.vhd{font-family:var(--mono);font-size:11px;color:var(--acc2);margin-bottom:6px}
+.take{border-top:1px dashed #1b2432;padding:6px 0}.take:first-of-type{border-top:0}
+.tk{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:3px}
+.rk{font-family:var(--mono);color:var(--acc);font-weight:700;font-size:12px}
+.chip{font-family:var(--mono);font-size:10.5px;padding:1px 6px;border-radius:4px;background:var(--panel);border:1px solid var(--line);color:var(--ink)}
+.chip i{color:var(--dim);font-style:normal;margin-right:4px}audio{width:100%;height:32px;margin:2px 0}
+.chip.primary{border-color:#2f6d66;background:#12201e}.chip.primary i{color:var(--acc)}
+.chip.promptsim{border-color:#4a3d6b;background:#171425}.chip.promptsim i{color:#9b8cf0}
+.txt{margin:6px 0}.txt summary{cursor:pointer;font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.03em}
+.txt summary:hover{color:var(--acc)}.txt p{font-size:12.5px;color:#c3ccd8;margin:7px 0;white-space:pre-wrap;max-width:82ch}
+.txt b{color:var(--ink);font-family:var(--mono);font-size:11px}
+@media(max-width:760px){.variants{grid-template-columns:1fr}}.r3{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.rcol{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:9px}.rhd{font-family:var(--mono);font-size:11px;color:#9b8cf0;margin-bottom:5px}</style>
+<div class="wrap"><div class="eyebrow">LAION · MOSS-8B voice-acting · prompting ablation</div><h1>moss-local: <span class="hl">raw 48 kHz vs Sidon-processed</span> — same takes</h1><div class="explain"><p><b>What to listen for.</b> the moss-local model outputs native 48 kHz audio. the production pipeline (as specced) downsamples every take to 16 kHz and reconstructs 48 kHz through sidon's DAC vocoder — an <b>upgrade for the 24 kHz 8B model, but a downgrade path (48k→16k→48k) for this one</b>: real high-frequency detail is replaced by vocoder-synthesised highs, which reads as an "auto-tuned / denoised" sheen. below: the identical take, raw vs sidon.</p></div></div>
