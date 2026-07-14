@@ -21,6 +21,16 @@
 32-codebook delay audio head at 24&nbsp;kHz. Live demo grids and evaluation dashboards for the
 fine-tuned model. Play the clips directly in your browser.</p>
 
+<h2>Production emotion grid</h2>
+<a class="card" href="production_best64_8b/index.html">
+  <div class="t">Production best-of-64 — 8B emotion grid (40 EmoNet emotions)</div>
+  <div class="d">The production best-of-64 emotion grid (recipe 1b) regenerated with the <b>8B MOSS</b>
+  model — it <b>replaces the 4B local transformer</b> of the original reference run. For each of the
+  <b>40 EmoNet emotions</b>, 64 diverse no-reference takes (audio-temp 0.8) from
+  <code>laion/voice-acting-prompts</code>, ranked by <code>reward = norm(target&nbsp;emotion) +
+  norm(blend) + norm(genuineness)</code> (min-max within each 64-group; target emotion = the
+  Empathic-Insight-Voice-Plus head on BUD-E-Whisper). Per-emotion top-3 of 64 + summary table.</div></a>
+
 <h2>Samples</h2>
 <a class="card" href="paraphrase_clones.html">
   <div class="t">Voice-Cloning + Paraphrase</div>

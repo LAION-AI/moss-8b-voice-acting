@@ -80,6 +80,7 @@ launchers, and loss construction — is in [`training/`](training/README.md). Br
 
 Hosted on GitHub Pages (play the audio in-browser):
 
+- **Production emotion grid:** [Best-of-64, 40 EmoNet emotions (8B)](https://projects.laion.ai/moss-8b-voice-acting/production_best64_8b/index.html) — recipe 1b regenerated with the 8B model (replaces the 4B local transformer); 40×64 no-reference takes ranked by `norm(target emotion) + norm(blend) + norm(genuineness)`, top-3 of 64 per emotion.
 - **Samples:** [Voice-cloning + paraphrase](https://projects.laion.ai/moss-8b-voice-acting/paraphrase_clones.html)
 - **Rankings:** [Genuineness (best-of-10)](https://projects.laion.ai/moss-8b-voice-acting/genuineness_ranking.html) ·
   [Combined reward](https://projects.laion.ai/moss-8b-voice-acting/reward_ranking.html)
