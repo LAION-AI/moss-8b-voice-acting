@@ -91,7 +91,7 @@ Generation params (both): `text_temperature 0.7, audio_top_p 0.95, audio_top_k 2
 audio_repetition_penalty 1.1`; `audio_temperature` **0.8 without** reference audio, **1.0 with**.
 Batch = repeat the prompt's `input_ids` n times and call `generate` once.
 
-## 4 · Sidon restoration (before scoring; keep only the restored audio)
+## 4 · Post-processing policy: keep RAW for 48 kHz-native models; Sidon only for 24 kHz
 
 [Sidon](https://github.com/sarulab-speech/Sidon) ([weights: `sarulab-speech/sidon_raw_weight`](https://huggingface.co/sarulab-speech/sidon_raw_weight)):
 LoRA-adapted [`facebook/w2v-bert-2.0`](https://huggingface.co/facebook/w2v-bert-2.0) encoder
@@ -106,6 +106,11 @@ LoRA-adapted [`facebook/w2v-bert-2.0`](https://huggingface.co/facebook/w2v-bert-
   the raw take.
 - Caveat from a 12.9k-clip paired ablation (8B model): Sidon-before-scoring is **neutral for
   selection** (Δreward ≈ 0) — its value is output audio quality, not better ranking.
+- **Policy (final, from listening tests + spectra):** the 4.55B local model outputs native 48 kHz —
+  running it through Sidon is a 48k→16k→48k round-trip that removes real 8–16 kHz detail and adds a
+  vocoder sheen. **Store the raw output for this model; do not apply Sidon.** For the 24 kHz 8B model
+  Sidon remains a genuine 16→48 kHz bandwidth upgrade (optional). Skipping Sidon also saves
+  0.34 s/clip.
 
 ## 5 · Scoring stack (per take; every model linked)
 
@@ -146,7 +151,8 @@ Per-clip (≈ 15 s audio, batch = group, SDPA bf16):
 | Sidon (batch 8) | 0.34 s | 0.34 s |
 | scoring (ASR+CLAP+volume) | 0.04 s | 0.04 s |
 | + EI-Plus emotion heads | +0.24 s | +0.24 s |
-| **fused end-to-end** | **≈ 1.2–1.3 s/clip** | **≈ 1.1–1.2 s/clip** (production-measured ~1.1–1.75 incl. IO) |
+| **fused end-to-end (with Sidon)** | ≈ 1.2–1.3 s/clip | ≈ 1.1–1.75 s/clip (measured) |
+| **fused end-to-end (RAW, no Sidon — recommended for 4.55B)** | ≈ 0.9–1.0 s/clip | **≈ 1.0–1.2 s/clip (production-measured, early-run mean 1.21)** |
 
 Workload table (fused, EI included; halve the EI column out if not emotion-ranking):
 
@@ -154,7 +160,7 @@ Workload table (fused, EI included; halve the EI column out if not emotion-ranki
 |---|---:|---:|---:|---:|
 | 5,000 × 16 | 80k | **~3.3 h** | ~3.7 h | ~26 h |
 | 1,000 × 128 | 128k | **~5.3 h** | ~5.9 h | ~42 h |
-| 40 emo × 100 × 64 | 256k | **~10 h** | ~11.5 h | ~83 h |
+| 40 emo × 100 × 64 | 256k | **~9–11 h raw** (measured) | ~11.5 h | ~86 h |
 
 Storage: FLAC 48 kHz ≈ 0.8 MB / 15 s → 128k clips ≈ 105 GB. Tar per bucket (emotion/subset) with a
 `scores.parquet` + `cells.jsonl` inside; upload-and-delete keeps local disk bounded.
@@ -177,7 +183,33 @@ Storage: FLAC 48 kHz ≈ 0.8 MB / 15 s → 128k clips ≈ 105 GB. Tar per bucket
    (unvalidated audio-quality risk). vLLM-style continuous batching would give ~2× but needs custom
    integration for the MOSS audio heads — only worth it at ≥ 1M-clip scale.
 
-## 9 · Reference implementation
+## 9 · Running on a fresh GPU pod (bootstrap checklist)
+
+1. **Env** (Python 3.10+, CUDA 12.x): `pip install torch torchaudio --index-url
+   https://download.pytorch.org/whl/cu128` then `pip install "transformers==5.13.1"
+   huggingface_hub accelerate sentencepiece librosa soundfile numpy pandas pyarrow "jiwer>=3.0"
+   peft descript-audio-codec safetensors` . If `torchaudio.load` complains about torchcodec,
+   monkey-patch load/save to use `soundfile` (all pipeline audio is WAV/FLAC).
+2. **Auth**: `export HF_TOKEN=...` (needed for the private base `TTS-AGI/moss-dramabox-ft` and any
+   private prompt repos).
+3. **Prompts** (pick one source, §1):
+   - DramaBox: `git clone https://github.com/LAION-AI/Voice-Acting-Pipeline` → `data/dramabox_*.json`
+   - 40-emotion prompts: `huggingface-cli download laion/voice-acting-prompts
+     geminittsprompts-output-en.tar --repo-type dataset` (emotion+burst labelled)
+   - casting CSVs: `laion/voice-acting-instructions`
+4. **Models** (auto-downloaded on first run): generator (§3 — 8B: `laion/moss-tts-v1.5-8b-voice-acting`;
+   4.55B: `TTS-AGI/moss-dramabox-ft` + LoRA `TTS-AGI/moss-local-transformer-voice-acting@checkpoint-1m`),
+   scorers `nvidia/parakeet-tdt-0.6b-v3`, `laion/voiceclap-commercial`, `laion/BUD-E-Whisper` +
+   `laion/Empathic-Insight-Voice-Plus` heads; optional Sidon `sarulab-speech/sidon_raw_weight`
+   + `facebook/w2v-bert-2.0` (24 kHz 8B model only, see §4).
+5. **Storage**: raw FLAC 48 kHz ≈ 0.8 MB / 15 s; plan ~1 GB per 1,200 clips; tar per bucket and
+   upload-and-delete to bound disk.
+6. **Sanity gates before a long run**: (a) one-group smoke end-to-end, (b) ASR hypothesis on 4 takes
+   (WER≈0 on an easy prompt proves the codec pairing is right), (c) confirm SDPA is active.
+7. **Example output corpus / reference**: [`laion/moss-local-voice-acting-64x100-part1..4`](https://huggingface.co/datasets/laion/moss-local-voice-acting-64x100-part1)
+   (raw 48 kHz FLAC + per-take scores + prompt metadata per emotion tar).
+
+## 10 · Reference implementation
 
 Working scripts (this study's box): manifest builder, fused worker (gen+Sidon+score→FLAC+parquet),
 uploader with per-bucket tar-and-delete, and rank/export with all four rewards — see
