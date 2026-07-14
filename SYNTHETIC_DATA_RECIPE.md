@@ -82,7 +82,10 @@ trust_remote_code=True)`, bf16, `attn_implementation="sdpa"`. The processor now 
 correct **v1** codec (a former misconfiguration pointing at v2 was fixed on the Hub — if in doubt
 pass `codec_path="OpenMOSS-Team/MOSS-Audio-Tokenizer"`).
 
-**4.55B local:** load base `TTS-AGI/moss-dramabox-ft` subfolder `checkpoint-last` with
+**4.55B local (simplest):** use the pre-merged off-the-shelf release —
+[`laion/moss-tts-local-transformer-4.55b-voice-acting`](https://huggingface.co/laion/moss-tts-local-transformer-4.55b-voice-acting)
+(`AutoModel.from_pretrained(..., trust_remote_code=True)` + `codec_path="OpenMOSS-Team/MOSS-Audio-Tokenizer-v2"`,
+no LoRA handling needed). Manual alternative: load base `TTS-AGI/moss-dramabox-ft` subfolder `checkpoint-last` with
 `codec_path="OpenMOSS-Team/MOSS-Audio-Tokenizer-v2"`, then **merge the rank-256 LoRA into the
 weights** (252 deltas, ~30 s; see the model card's inference snippet). bf16 + **SDPA only** —
 flash-attn 2.x fails in this checkpoint's remote-code attention (reshape mismatch).
