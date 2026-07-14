@@ -103,6 +103,14 @@ Hosted on GitHub Pages (play the audio in-browser):
 Landing page: <https://projects.laion.ai/moss-8b-voice-acting/>
 
 
+## Synthetic data recipe
+
+**[SYNTHETIC_DATA_RECIPE.md](SYNTHETIC_DATA_RECIPE.md)** — standalone guide for generating ranked
+best-of-N voice-acting corpora with either MOSS voice-acting model (this 8B delay model or the
+4.55B local transformer): prompt sources & parsing, group-size trade-offs, Sidon restoration,
+the full scoring stack with all model links, reward definitions, measured throughput tables,
+and A100 speed tips.
+
 ## Experiment write-ups (what the demo pages show)
 
 All pages are self-contained HTML with embedded audio — click any link above and press play.
